@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/menu.jsp" />
-</br>
+
 <div class="liste"></div>
 <c:choose>
 
@@ -27,7 +27,7 @@
 					</tr>
 					<tbody>
 						<c:forEach items="${ clients }" var="client">
-		
+							<tr>
 								<td><c:out value="${ client.companyName }" /></td>
 								<td><c:out value="${ client.firstName }" /></td>
 								<td><c:out value="${ client.lastName }" /></td>
@@ -42,4 +42,7 @@
 				</table>
 			</c:otherwise>
 		</c:choose>
-	</div>
+	
+	<div><a href="<c:url value="/ajouterClient" />">Ajouter un client</a></div>
+
+</body>	
