@@ -19,7 +19,6 @@ public class ClientDaoImpl implements Dao<Client> {
 	private static final String SQL_SELECT       = "SELECT id,companyName,firstName,lastName,email,phone,address,zipCode,city,country,state FROM client";
     private static final String SQL_SELECT_BY_ID = "SELECT id,companyName,firstName,lastName,email,phone,address,zipCode,city,country,state FROM client WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id = ? ";
-	
 	private static final String SQL_UPDATE = "UPDATE client SET companyName=?,firstName=?,lastName=?,email=?,phone=?,address=?,zipCode=?,country=?, state=? WHERE id=?";
 	
 	private DaoFactory factory;
@@ -38,12 +37,13 @@ public class ClientDaoImpl implements Dao<Client> {
 			pst.setString( 1, client.getCompanyName());
 			pst.setString( 2, client.getFirstName() );
 			pst.setString( 3, client.getLastName() );
-			pst.setString( 4, client.getPhone() );
-			pst.setString( 5, client.getAdresse() );
-			pst.setString( 6, client.getZipCode() );
-			pst.setString( 7, client.getCity());
-			pst.setString( 8, client.getCountry());
-			pst.setLong( 9, client.getState());
+			pst.setString( 4, client.getEmail() );
+			pst.setString( 5, client.getPhone() );
+			pst.setString( 6, client.getAddress() );
+			pst.setString( 7, client.getZipCode() );
+			pst.setString( 8, client.getCity());
+			pst.setString( 9, client.getCountry());
+			pst.setLong( 10, client.getState());
 			
 			int statut = pst.executeUpdate();
 
@@ -79,7 +79,7 @@ public class ClientDaoImpl implements Dao<Client> {
 			pst.setString( 2, client.getFirstName() );
 			pst.setString( 3, client.getLastName() );
 			pst.setString( 4, client.getPhone() );
-			pst.setString( 5, client.getAdresse() );
+			pst.setString( 5, client.getAddress() );
 			pst.setString( 6, client.getZipCode() );
 			pst.setString( 7, client.getCity());
 			pst.setString( 8, client.getCountry());
@@ -178,7 +178,7 @@ public class ClientDaoImpl implements Dao<Client> {
 		c.setLastName(resultSet.getString("lastName"));
 		c.setEmail(resultSet.getString("email") );
 		c.setPhone(resultSet.getString("phone") );
-		c.setAdresse(resultSet.getString("address") );
+		c.setAddress(resultSet.getString("address") );
 		c.setZipCode(resultSet.getString("zipCode"));
 		c.setCity(resultSet.getString("City"));
 		c.setCountry(resultSet.getString("country"));
