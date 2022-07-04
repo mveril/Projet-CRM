@@ -30,12 +30,13 @@ public class DetailsClient extends HttpServlet {
 		
 		long id = Long.parseLong(request.getParameter("id"));
 		
-		try {
-			Client clientRecherche = clientDao.trouver(id);
-			request.setAttribute("client", clientRecherche);
-		} catch (DaoException e) {
-			e.printStackTrace();
-		}
+		
+			try {
+				Client client = clientDao.trouver(id);
+				request.setAttribute("client", client);
+			} catch (DaoException e) {
+				e.printStackTrace();
+			}
 		
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/detailsClient.jsp").forward(request, response);
