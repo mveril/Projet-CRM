@@ -17,56 +17,48 @@
 	
 		<form method="post" action="<c:url value="/modifierClient"><c:param name="id" value="${client.id}"/></c:url>">
 			<fieldset>
-				<legend> Modifier un client </legend>
-				
-				
+				<legend> Modifier un client </legend>				
 				<br/>
 				
-				
-			    <label for="companyName"> companyName </label> 
+			    <label for="companyName"> Nom de la compagnie </label> 
 				<input type="text" id="companyName" name="companyName" value="${client.companyName}" />
 				<br/> 
 				
 
-				<label for="firstName"> FirstName </label> 
+				<label for="firstName"> Prenom </label> 
 				<input type="text" id="firstName" name="firstName" value="${ client.firstName }" />
 				<br/> 
-				
-		
 				 
-				 <label for="lastName">LastName </label> 
+				 <label for="lastName">Nom </label> 
 				 <input type="text" id="lastName" name="lastName" value="${ client.lastName }" />
 				<br/>
-				
-				
-				
 				
 				 <label for="email"> Email </label> 
 				 <input type="text" id="email" name="email" value="${ client.email }" />
 				<br/>
 				
-				<label for="phone"> telephone </label> 
+				<label for="phone"> Telephone </label> 
 				 <input type="text" id="phone" name="phone" value="${ client.phone }" />
 				<br/>
 				
-				<label for="address"> Address </label> 
+				<label for="address"> Adresse </label> 
 				 <input type="text" id="address" name="address" value="${ client.address}" />
 				<br/>
 				
-				<label for="zipCode"> ZipCode</label> 
+				<label for="zipCode"> Code Postal</label> 
 				 <input type="text" id="zipCode" name="zipCode" value="${ client.zipCode }" />
 				<br/>
 				
 				
-				<label for="city"> City  </label> 
+				<label for="city"> Ville  </label> 
 				 <input type="text" id="city" name="city" value="${ client.city }" />
 				<br/>
 				
-				<label for="country"> Country </label> 
+				<label for="country"> Pays </label> 
 				 <input type="text" id="country" name="country"value="${ client.country }" />
 				<br/>
 				
-				<label for="state"> state </label> 
+				<label for="state"> Etat </label> 
 				 <input type="text" id="state" name="state" value="${ client.state }" />
 				<br/>
 				

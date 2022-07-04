@@ -40,20 +40,11 @@ public class ModifierClient extends HttpServlet {
 				request.setAttribute("client", clientDao.trouver(id));
 			} catch (DaoException e) {
 				e.printStackTrace();
-			}
-			
-			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierClient.jsp").forward(request, response);
-			
-		
-		
+			}		
+			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierClient.jsp").forward(request, response);	
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	
-		
 		
 		String companyName=request.getParameter("companyName");
 		String firstName=request.getParameter("firstName");
