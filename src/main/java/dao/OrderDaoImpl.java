@@ -13,11 +13,11 @@ import modele.Order;
 
 public class OrderDaoImpl implements Dao<Order> {
 
-	private static final String SQL_INSERT       = "INSERT INTO Orders(clientId, typePresta, designation, nbDays,unitPrice,state) VALUES(?,?,?,?,?,?,?)";
+	private static final String SQL_INSERT       = "INSERT INTO Orders(clientId, typePresta, designation, nbDays,unitPrice,state) VALUES(?,?,?,?,?,?)";
 
 
-	private static final String SQL_SELECT       = "SELECT id, clientId, typePresta, designation, nbDays,unitPrice,state FROM Orders";
-    private static final String SQL_SELECT_BY_ID = "SELECT id, clientId, typePresta, designation, nbDays,unitPrice,state FROM Orders WHERE id = ?";
+	private static final String SQL_SELECT       = "SELECT * FROM Orders";
+    private static final String SQL_SELECT_BY_ID = "SELECT * FROM Orders WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM Orders WHERE id = ? ";
 
 	private static final String SQL_UPDATE = "UPDATE Orders SET clientId=?, typePresta=?, designation=?, nbDays=?,unitPrice=?,state=? WHERE id = ?";
@@ -37,29 +37,29 @@ public class OrderDaoImpl implements Dao<Order> {
 			PreparedStatement pst = con.prepareStatement( SQL_INSERT, Statement.RETURN_GENERATED_KEYS );
 
 			pst.setLong( 1, Order.getClient().getId() );
-			pst.setString( 2, Order.getDesignation());
-			pst.setLong( 3, Order.getNbDays() );
-			pst.setFloat( 4, Order.getUnitPrice());
-			pst.setFloat( 5, Order.getTotalExcludeTaxe());
-			pst.setFloat( 6, Order.getTotalExcludeTaxe());
+			pst.setString( 2, Order.getTypePresta());
+			pst.setString( 3, Order.getDesignation() );
+			pst.setLong( 4, Order.getNbDays());
+			pst.setFloat( 5, Order.getUnitPrice());
+			pst.setLong( 6, Order.getState());
 
 
 			int statut = pst.executeUpdate();
 
             if ( statut == 0 ) {
-                throw new DaoException( "Echec cr�ation Order (aucun ajout)" );
+                throw new DaoException( "Echec création Order (aucun ajout)" );
             }
             ResultSet rsKeys = pst.getGeneratedKeys();
             if ( rsKeys.next() ) {
                 Order.setId( rsKeys.getLong( 1 ) );
             } else {
-                throw new DaoException( "Echec cr�ation Order (ID non retourn�)" );
+                throw new DaoException( "Echec création Order (ID non retourné)" );
             }
             rsKeys.close();
 			pst.close();
 
 	    } catch(SQLException ex) {
-	    	throw new DaoException("Echec cr�ation Order",ex);
+	    	throw new DaoException("Echec création Order",ex);
 	    } finally {
 	    	factory.releaseConnection(con);
 		}
@@ -133,30 +133,30 @@ public class OrderDaoImpl implements Dao<Order> {
 
 
 	@Override
-	public void update(Order Order) throws DaoException {
+	public void update(Order order) throws DaoException {
 		Connection con=null;
 		try {
 			con = factory.getConnection();
 
 			PreparedStatement pst = con.prepareStatement( SQL_UPDATE );
 
-			pst.setLong( 1, Order.getClient().getId() );
-			pst.setString( 2, Order.getTypePresta());
-			pst.setLong( 3, Order.getNbDays() );
-			pst.setLong( 4, Order.getState());
-			pst.setFloat( 5, Order.getUnitPrice());
-			pst.setFloat( 6, Order.getUnitPrice());
-			pst.setLong( 7, Order.getId() );
+			pst.setLong( 1, order.getClient().getId() );
+			pst.setString( 2, order.getTypePresta());
+			pst.setLong( 3, order.getNbDays() );
+			pst.setLong( 4, order.getState());
+			pst.setFloat( 5, order.getUnitPrice());
+			pst.setFloat( 6, order.getUnitPrice());
+			pst.setLong( 7, order.getId() );
 
 			int statut = pst.executeUpdate();
 
             if ( statut == 0 ) {
-                throw new DaoException( "Echec mise � jour Order" );
+                throw new DaoException( "Echec mise à jour Order" );
             }
 			pst.close();
 
 	    } catch(SQLException ex) {
-	    	throw new DaoException("Echec mise � jour Order",ex);
+	    	throw new DaoException("Echec mise à jour Order",ex);
 	    } finally {
 	    	factory.releaseConnection(con);
 		}

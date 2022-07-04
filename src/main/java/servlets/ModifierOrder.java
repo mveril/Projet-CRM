@@ -17,9 +17,7 @@ import dao.DaoFactory;
 import modele.Client;
 import modele.Order;
 
-/**
- * Servlet implementation class ModifierOrder
- */
+
 @WebServlet("/modifierOrder")
 public class ModifierOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,55 +50,38 @@ public class ModifierOrder extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/modifierOrder.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-        Dao<Order> orderDao  = DaoFactory.getInstance().getOrderDao();
+		Long id = Long.parseLong(request.getParameter("id"));
 		
 		String typePresta=request.getParameter("typePresta");
 		String designation =request.getParameter("designation");
 	    int nbDays=Integer.parseInt(request.getParameter("nbDays"));
-	    
-	    String unitPriceStr =request.getParameter("unitPrice");
-	    var unitPrice= Long.parseLong(unitPriceStr);
-	    
-	 
-	    
-	    String stateStr =request.getParameter("state");
-	    var state= Long.parseLong(stateStr);
-	    
-	//    (id_client, typePresta, designation, nbDays,unitPrice,state)	   
+	    Float unitPrice =Float.parseFloat(request.getParameter("unitPrice"));
+	    long state =Long.parseLong(request.getParameter("state"));
+	    long idClient = Long.parseLong(request.getParameter("clientId"));
 	    
 	    
-	    var clientIdStr = request.getParameter("clientOrder");
-	    var clientId = Long.parseLong(clientIdStr );
-	    
-	    
-	    Dao<Client> clients = DaoFactory.getInstance().getClientDao();	
-		Order order = new Order();
+		Order order = null;
 	   
 	    try {
-			Client client= clients.trouver(clientId);	
+	    	order = orderDao.trouver(id);
+	    	Client client= clientDao.trouver(id);
 			
-			order.setClient(client);
-						
+			order.setClient(client);		
 			order.setTypePresta(typePresta);
 	        order.setDesignation(designation);
 	        order.setNbDays(nbDays);
 	        order.setUnitPrice(unitPrice);
 	        order.setState(state);
-	        
-	        
-// (id_client, typePresta, designation, nbDays,unitPrice,state)	        
-	        
+
 	        orderDao.update(order);
 	        
 		} catch (DaoException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}   
         
-        response.sendRedirect(request.getContextPath()+ "/ListeOrders");
+        response.sendRedirect(request.getContextPath()+ "/listeOrders");
 		
 		
 		

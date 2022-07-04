@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Modifier commande</title>
 </head>
 <body>
 
@@ -16,16 +16,15 @@
 	<div class="view">
 
 		<form method="post"
-			action="<c:url value="/modifierLivre"><c:param name="id" value="${order.id}"/></c:url>">
+			action="<c:url value="/modifierOrder"><c:param name="id" value="${order.id}"/></c:url>">
 			<fieldset>
 				<legend> Modifier Order </legend>
 
-				<select id="clientOrder" name="clientOrder">
+				<select id="clientId" name="clientId">
 					<c:forEach items="${ clients }" var="client">
-						<option value="<c:out value="${ client.id }"/>"
-							${ client.id == order.client.id ? "selected" : "" }><c:out
-								value="${ auteur.firstName }" />
-							<c:out value="${ client.Name }" /></option>
+						<option value="<c:out value="${ client.id }"/>"${ client.id == order.client.id ? "selected" : "" }>
+						<c:out value="${ client.firstName }" /> <c:out value="${ client.lastName }" />
+						</option>
 					</c:forEach>
 				</select> <br /> <label for="typePresta"> typePresta </label> <input
 					type="text" id="typePresta" name="typePresta"
@@ -42,18 +41,12 @@
 
 			</fieldset>
 
-			<input type="submit" value="Valider" /> <input type="reset"
-				value="Remettre à zero " />
+			<input type="submit" value="Valider" /> <input type="reset" value="Remettre à zero " />
 
 		</form>
 
 
 	</div>
-
-
-	<input type="submit" value="Valider" />
-	<input type="reset" value="Remettre à zéro" />
-	
 
 
 
