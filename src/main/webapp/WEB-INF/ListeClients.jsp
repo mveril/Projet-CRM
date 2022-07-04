@@ -9,10 +9,10 @@
 </head>
 <body>
 <c:import url="/WEB-INF/menu.jsp" />
-</br>
-<button><a href="<c:url value="/ajouterClient" />">Ajouter un client</a></button>
 
-</br><div class="liste"></div>
+<button class="bouton"><a href="<c:url value="/ajouterClient" />">Ajouter un client</a></button>
+
+<div class="liste"></div>
 <c:choose>
 
 				  <c:when test="${ empty clients }">

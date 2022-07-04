@@ -6,13 +6,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Ajout d'une commande</title>
 </head>
 <body>
-
+<c:import url="/WEB-INF/menu.jsp" />
 <div class="form">
-		<form method="post" action="<c:url value="/ajouterOrder"/>">
-		
+		<form method="post" action="<c:url value="/ajouterOrder"/>">	
 		<fieldset>
 			<legend> Créer une commande</legend>
 			
@@ -43,7 +42,7 @@
 		</fieldset>
 
 			<input type="submit" value="Valider" /> <input type="reset"
-				value="Remettre � zero " />
+				value="Remettre a zero " />
 
 		</form>
 	</div>

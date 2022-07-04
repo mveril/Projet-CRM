@@ -11,8 +11,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/menu.jsp" />
-</br>
-<button><a href="<c:url value="/ajouterOrder" />">Ajouter une commande</a></button>
+<button class="bouton"><a href="<c:url value="/ajouterOrder" />">Ajouter une commande</a></button>
 
 	<div class="view">
 	
