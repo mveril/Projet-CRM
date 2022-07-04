@@ -13,37 +13,39 @@ import dao.Dao;
 import dao.DaoException;
 import dao.DaoFactory;
 import modele.Client;
+import modele.Order;
 
 
-@WebServlet("/listeClients")
-public class ListeClients extends HttpServlet {
+@WebServlet("/listeOrders")
+public class ListeOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Dao<Client> clientDao;
-   
-    public ListeClients() {
+       
+	private Dao<Order> orderDao;
+    public ListeOrders() {
         super();
-        clientDao=DaoFactory.getInstance().getClientDao();
+        orderDao = DaoFactory.getInstance().getOrderDao();
     }
-    
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try 
+		try
 		{
-			List<Client> clients=null;
-			
-			clients = clientDao.lister();
-			
-			request.setAttribute("clients", clientDao.lister());
-		} 
-		catch (DaoException e) 
+			List<Order> orders=null;
+
+			orders = orderDao.lister();
+
+			request.setAttribute("orders", orderDao.lister());
+		}
+		catch (DaoException e)
 		{
 			e.printStackTrace();
 		}
 		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/listeOrders.jsp").forward(request, response);
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/ListeClients.jsp").forward(request, response);
 	}
-
 	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
 
 }
