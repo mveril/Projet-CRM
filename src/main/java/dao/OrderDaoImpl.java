@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Order;
+import modele.Order;
 
 public class OrderDaoImpl implements OrderDao {
 	
