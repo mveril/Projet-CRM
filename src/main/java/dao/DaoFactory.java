@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import modele.Client;
+import modele.Order;
+
 public class DaoFactory {
  
 	 private String url;
@@ -34,11 +37,11 @@ public class DaoFactory {
 	}
 	
 	
-	public ClientDao getClientDao() {
+	public Dao<Client> getClientDao() {
 		return new ClientDaoImpl( this );
 	}
 	
-	public OrderDao getLivreDao() {
+	public Dao<Order> getOrderDao() {
 		return new OrderDaoImpl( this );
 	}
 

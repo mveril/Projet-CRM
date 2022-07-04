@@ -10,14 +10,16 @@ import java.util.List;
 
 import modele.Order;
 
-public class OrderDaoImpl implements OrderDao {
+public class OrderDaoImpl implements Dao<Order> {
 	
-	private static final String SQL_INSERT       = "INSERT INTO Order(id_client, titre, nb_pages, categorie) VALUES(?,?,?,?)";
-	private static final String SQL_SELECT       = "SELECT id, id_client, titre, nb_pages, categorie FROM Order";
-    private static final String SQL_SELECT_BY_ID = "SELECT id, id_client, titre, nb_pages, categorie FROM Order WHERE id = ?";
+	private static final String SQL_INSERT       = "INSERT INTO Order(id_client, typePresta, designation, nbDays,unitPrice,state) VALUES(?,?,?,?,?,?,?)";
+	
+
+	private static final String SQL_SELECT       = "SELECT id, id_client, typePresta, designation, nbDays,unitPrice,state FROM Order";
+  private static final String SQL_SELECT_BY_ID = "SELECT id, id_client, typePresta, designation, nbDays,unitPrice,state FROM Order WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM Order WHERE id = ? ";
 	
-	private static final String SQL_UPDATE = "UPDATE Order SET id_client=?, titre=?, nb_pages=?, categorie=? WHERE id = ?";
+	private static final String SQL_UPDATE = "UPDATE Order SET id_client=?, typePresta=?, designation=?, nbDays=?,unitPrice=?,state=? WHERE id = ?";
 	
 	private DaoFactory factory;
 	
@@ -137,11 +139,13 @@ public class OrderDaoImpl implements OrderDao {
 			
 			PreparedStatement pst = con.prepareStatement( SQL_UPDATE );
 
-			pst.setLong( 1, Order.getclient().getId() );
-			pst.setString( 2, Order.getTitre());
-			pst.setInt( 3, Order.getNbPages() );
-			pst.setString( 4, Order.getCategorie());
-			pst.setLong( 5, Order.getId() );
+			pst.setLong( 1, Order.getClient().getId() );
+			pst.setString( 2, Order.getTypePresta());
+			pst.setLong( 3, Order.getNbDays() );
+			pst.setLong( 4, Order.getState());
+			pst.setFloat( 5, Order.getUnitPrice());
+			pst.setFloat( 6, Order.getUnitPrice());
+			pst.setLong( 7, Order.getId() );
 			
 			int statut = pst.executeUpdate();
 
@@ -162,20 +166,23 @@ public class OrderDaoImpl implements OrderDao {
      * M�thode utilitaire (interne)
      */
     private static Order map( ResultSet resultSet ) throws SQLException {
-        Order l = new Order();
-        l.setId( resultSet.getLong( "id" ) );
+        Order o = new Order();
+        o.setId( resultSet.getLong( "id" ) );
         
-        ClientDao clientDao = DaoFactory.getInstance().getClientDao();
+        Dao<Client> dao = DaoFactory.getInstance().getClientDao();
         try {
-			l.setClient(clientDao.trouver(resultSet.getLong( "id_client" )));
+			o.setClient(dao.trouver(resultSet.getLong( "id_client" )));
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
         
-        l.setTitre(resultSet.getString( "titre" ));
-        l.setNbPages(resultSet.getInt( "nb_pages" ));
-        l.setCategorie(resultSet.getString( "categorie" ));
-        return l;
+        o.setDesignation(resultSet.getString( "designation"));
+        o.setTypePresta(resultSet.getString( "typePresta" ));
+        o.setNbDays(resultSet.getInt( "nbDays" ));
+        o.setState(resultSet.getLong( "state" ));
+        o.setUnitPrice(resultSet.getFloat( "unitPrice" ));  
+        
+        return o;
     }
 
 }
