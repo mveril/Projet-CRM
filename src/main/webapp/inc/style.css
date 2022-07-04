@@ -10,7 +10,22 @@
 	color : #646464
 }
 
+table
+{
+	margin: auto;
+	width: 100%;
+}
 
+.bouton
+{
+	margin: 20px;
+	background-color: #00ACD6;
+	border-radius: 5px;
+}
+
+button:hover {
+  background-color: #33FFBE;
+}
 
 .menu
 {

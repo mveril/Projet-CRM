@@ -7,15 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Ajout d'un client</title>
 </head>
 <body>
-
-
 <c:import url="/WEB-INF/menu.jsp" />
-
-
-
 	<div class="form">
 		<form method="post" action="<c:url value="/ajouterClient"/>">
 
