@@ -32,11 +32,9 @@
 								<td><c:out value="${ client.firstName }" /></td>
 								<td><c:out value="${ client.lastName }" /></td>
 
-									<td><a href="<c:url value="/detailsClient"><c:param name="id" value="${ client.id }" /></c:url>">Voir</a></td>
-									 
-									<td><a href="<c:url value="/modifierClient"><c:param name="id" value="${ client.id }" /></c:url>">Modifier</a></td>
-									 
-									<td><a href="<c:url value="/supprimerClient"><c:param name="id" value="${ client.id }" /></c:url>">Supprimer</a></td>
+								<td><a href="<c:url value="/detailsClient"><c:param name="id" value="${ client.id }" /></c:url>">Voir</a></td>
+								<td><a href="<c:url value="/modifierClient"><c:param name="id" value="${ client.id }" /></c:url>">Modifier</a></td>
+								<td><a href="<c:url value="/supprimerClient"><c:param name="id" value="${ client.id }" /></c:url>">Supprimer</a></td>
 								
 							</tr>
 						</c:forEach>
