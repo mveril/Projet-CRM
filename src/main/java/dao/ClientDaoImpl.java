@@ -17,7 +17,7 @@ public class ClientDaoImpl implements Dao<Client> {
 	
 	private static final String SQL_INSERT       = "INSERT INTO client(companyName,firstName,lastName,email,phone,address,zipCode,city,	country,state) VALUES(?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_SELECT       = "SELECT id,companyName,firstName,lastName,email,phone,address,zipCode,city,country,state FROM client";
-    private static final String SQL_SELECT_BY_ID = "SELECT id,companyName,firstName,lastName,email,phone,address,zipCode,city,country,state WHERE id = ?";
+    private static final String SQL_SELECT_BY_ID = "SELECT id,companyName,firstName,lastName,email,phone,address,zipCode,city,country,state FROM client WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id = ? ";
 	
 	private static final String SQL_UPDATE = "UPDATE client SET companyName=?,firstName=?,lastName=?,email=?,phone=?,address=?,zipCode=?,country=?, state=? WHERE id=?";
