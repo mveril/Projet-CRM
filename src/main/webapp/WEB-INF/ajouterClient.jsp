@@ -27,21 +27,15 @@
 				
 			    <label for="companyName"> companyName </label> 
 				<input type="text" id="companyName" name="companyName" value="${ client.companyName}" />
-				<br/> 
-				
+				<br/> 			
 
 				<label for="firstName"> FirstName </label> 
 				<input type="text" id="firstName" name="firstName" value="${ client.firstName }" />
 				<br/> 
-				
-		
-				 
+								 
 				 <label for="lastName">LastName </label> 
 				 <input type="text" id="lastName" name="lastName" value="${ client.lastName }" />
 				<br/>
-				
-				
-				
 				
 				 <label for="email"> Email </label> 
 				 <input type="text" id="email" name="email" value="${ client.email }" />
@@ -57,8 +51,7 @@
 				
 				<label for="zipCode"> ZipCode</label> 
 				 <input type="text" id="zipCode" name="zipCode" value="${ client.zipCode }" />
-				<br/>
-				
+				<br/>		
 				
 				<label for="city"> City  </label> 
 				 <input type="text" id="city" name="city" value="${ client.city }" />
@@ -71,26 +64,12 @@
 				<label for="state"> state </label> 
 				 <input type="text" id="state" name="state" value="${ client.state }" />
 				<br/>
-				
-				
-				
-				
-				
-			     
 					
 			</fieldset>
 
 			<input type="submit" value="Valider" /> <input type="reset"
-				value="Remettre � zero " />
-
-
-
-
-
-
+				value="Remettre a zero " />
 		</form>
-
-
 	</div>
 
 </body>

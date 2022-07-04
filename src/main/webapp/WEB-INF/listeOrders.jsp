@@ -10,6 +10,9 @@
 
 </head>
 <body>
+<c:import url="/WEB-INF/menu.jsp" />
+</br>
+<button><a href="<c:url value="/ajouterOrder" />">Ajouter une commande</a></button>
 
 	<div class="view">
 	
@@ -21,9 +24,9 @@
 				<table>
 					<thead>
 						<tr>
-							<th>TypePresta</th>
+							<th>Type de prestation</th>
 							<th>Designation</th>
-							<th>Actions</th>
+							<th colspan="3">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
