@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import model.Client;
+import modele.Client;
 
 public class ClientDaoImpl implements Dao<Client> {
 	
