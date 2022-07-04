@@ -42,7 +42,7 @@
 			</tbody>
 		</table>
 		
-			<div><a href="<c:url value="/ListeOrders" />">Retour à la liste des commandes</a></div>
+			<div><a href="<c:url value="/listeOrders" />">Retour à la liste des commandes</a></div>
 		
 
 </body>
