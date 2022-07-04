@@ -24,7 +24,7 @@
 				<input type="text" id="companyName" name="companyName" value="${ client.companyName}" />
 				<br/> 			
 
-				<label for="firstName"> Prénom </label> 
+				<label for="firstName"> PrÃ©nom </label> 
 				<input type="text" id="firstName" name="firstName" value="${ client.firstName }" />
 				<br/> 
 								 
@@ -44,7 +44,7 @@
 				 <input type="text" id="address" name="address" value="${ client.adress}" />
 				<br/>
 				
-				<label for="zipCode"> ZipCode</label> 
+				<label for="zipCode"> Code postal</label> 
 				 <input type="text" id="zipCode" name="zipCode" value="${ client.zipCode }" />
 				<br/>		
 				

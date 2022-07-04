@@ -184,6 +184,8 @@ public class OrderDaoImpl implements Dao<Order> {
         o.setNbDays(resultSet.getInt( "nbDays" ));
         o.setState(resultSet.getLong( "state" ));
         o.setUnitPrice(resultSet.getFloat( "unitPrice" ));
+        o.setTotalExcludeTaxe(resultSet.getFloat( "totalExcludeTaxe" ));
+        o.setTotalWithTaxe(resultSet.getFloat( "TotalWithTaxe" ));
 
         return o;
     }
