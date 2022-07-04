@@ -38,12 +38,13 @@ public class ClientDaoImpl implements Dao<Client> {
 			pst.setString( 1, client.getCompanyName());
 			pst.setString( 2, client.getFirstName() );
 			pst.setString( 3, client.getLastName() );
-			pst.setString( 4, client.getPhone() );
-			pst.setString( 5, client.getAdresse() );
-			pst.setString( 6, client.getZipCode() );
-			pst.setString( 7, client.getCity());
-			pst.setString( 8, client.getCountry());
-			pst.setLong( 9, client.getState());
+			pst.setString( 4, client.getEmail() );
+			pst.setString( 5, client.getPhone() );
+			pst.setString( 6, client.getAdresse() );
+			pst.setString( 7, client.getZipCode() );
+			pst.setString( 8, client.getCity());
+			pst.setString( 9, client.getCountry());
+			pst.setLong( 10, client.getState());
 			
 			int statut = pst.executeUpdate();
 
