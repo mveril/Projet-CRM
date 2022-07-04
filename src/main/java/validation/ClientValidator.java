@@ -131,6 +131,19 @@ public class ClientValidator {
 		}
 	}
 	
+	static String validateState(String state) {
+		var min = 0;
+		var max = 3;
+		if(state != null) {
+			if(state.matches(String.format("[%d-%d]",min,max))) {
+				return String.format("L'état du client doit être entre %d est %d", min, max);
+			}
+			else {
+				return null;
+			}
+		}
+	}
+	
 	static Map<String,String> validateClient(Client client) {
 		var map = new HashMap<String,String>();
 		var error= ClientValidator.validateCompanyName(client.getCompanyName());
