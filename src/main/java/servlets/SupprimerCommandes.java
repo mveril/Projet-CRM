@@ -39,6 +39,6 @@ public class SupprimerCommandes extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/listeCommandes");
+		response.sendRedirect(request.getContextPath()+"/listeOrders");
 	}
 }
