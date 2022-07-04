@@ -6,7 +6,7 @@ import java.util.Map;
 import modele.Client;
 
 public class ClientValidator {
-	static String validateCompanyName(String companyName) {
+	public static String validateCompanyName(String companyName) {
 		if(companyName == null) {
 			return "Vous devez rentrer le nom de la compagnie";
 		} else {
@@ -19,7 +19,7 @@ public class ClientValidator {
 			}
 		}
 	}
-	static String validateFirstName(String firstName) {
+	public static String validateFirstName(String firstName) {
 		if(firstName == null) {
 			return "Vous devez rentrer un prénom";
 		} else {
@@ -33,7 +33,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateLastName(String lastName) {
+	public static String validateLastName(String lastName) {
 		if(lastName == null) {
 			return "Vous devez rentrer un nom de famille";
 		} else {
@@ -47,7 +47,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateEmail(String email) {
+	public static String validateEmail(String email) {
 		if(email == null) {
 			return "Vous devez rentrer un email";
 		} else {
@@ -65,7 +65,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateZipCode(String zipCode) {
+	public static String validateZipCode(String zipCode) {
 		if(zipCode.matches("\\d{5}")){
 			return null;
 		} else {
@@ -73,7 +73,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validatePhone(String phone) {
+	public static String validatePhone(String phone) {
 		if(phone != null) {
 			if(phone.matches("\\d{,15}")){
 				return null;
@@ -85,14 +85,14 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateAdress(String address) {
+	public static String validateAdress(String address) {
 		if(address != null) {
 			return null;
 		} else {
 			return "Vous devez rentrer une adresse";
 		}
 	}
-	static String validateCity(String city) {
+	public static String validateCity(String city) {
 		if(city == null) {
 			return "Vous devez rentrer une ville";
 		} else {
@@ -106,7 +106,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateCountry(String city) {
+	public static String validateCountry(String city) {
 		if(city == null) {
 			return "Vous devez rentrer un pays";
 		} else {
@@ -120,7 +120,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateState(long state) {
+	public static String validateState(long state) {
 		var min = 0;
 		var max = 3;
 		if(min > state || max < state) {
@@ -131,7 +131,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static String validateState(String state) {
+	public static String validateState(String state) {
 		var min = 0;
 		var max = 3;
 		if(state != null) {
@@ -146,7 +146,7 @@ public class ClientValidator {
 		}
 	}
 	
-	static Map<String,String> validateClient(Client client) {
+	public static Map<String,String> validateClient(Client client) {
 		var map = new HashMap<String,String>();
 		var error= ClientValidator.validateCompanyName(client.getCompanyName());
 		if(error != null) {
