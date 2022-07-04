@@ -1,5 +1,7 @@
 package dao;
 
+import modele.Client;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +13,7 @@ import java.util.List;
 
 import model.Client;
 
-public class ClientDaoImpl implements ClientDao {
+public class ClientDaoImpl implements Dao<Client> {
 	
 	private static final String SQL_INSERT       = "INSERT INTO client(companyName,firstName,lastName,email,phone,address,zipCode,city,	country,state) VALUES(?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_SELECT       = "SELECT id,companyName,firstName,lastName,email,phone,address,zipCode,city,country,state FROM client";
