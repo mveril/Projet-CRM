@@ -19,9 +19,10 @@
 			<c:otherwise>
 				<table>
 					<tr>
-						<th>CompanyName</th>
-						<th>FirstName</th>
-						<th>LastName</th>
+						<th>Nom de la compagnie</th>
+						<th>Prenom</th>
+						<th>Nom</th>
+						<th colspan="3">Actions<th>
 						
 					</tr>
 					<tbody>
@@ -31,13 +32,12 @@
 								<td><c:out value="${ client.firstName }" /></td>
 								<td><c:out value="${ client.lastName }" /></td>
 
-								<%-- <td>
-									<a href="<c:url value="/detailsAuteur"><c:param name="id" value="${ auteur.id }" /></c:url>">Voir</a>
-									 | 
-									<a href="<c:url value="/modifierAuteur"><c:param name="id" value="${ auteur.id }" /></c:url>">Modifier</a>
-									 | 
-									<a href="<c:url value="/supprimerAuteur"><c:param name="id" value="${ auteur.id }" /></c:url>">Supprimer</a>
-								</td> --%>
+									<td><a href="<c:url value="/detailsClient"><c:param name="id" value="${ client.id }" /></c:url>">Voir</a></td>
+									 
+									<td><a href="<c:url value="/modifierClient"><c:param name="id" value="${ client.id }" /></c:url>">Modifier</a></td>
+									 
+									<td><a href="<c:url value="/supprimerClient"><c:param name="id" value="${ client.id }" /></c:url>">Supprimer</a></td>
+								
 							</tr>
 						</c:forEach>
 					</tbody>

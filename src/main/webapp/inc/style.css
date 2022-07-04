@@ -6,3 +6,24 @@
 	width: 100%;
 	margin: auto;
 }
+
+td 
+{ 
+ 	text-align:center;
+}
+ 
+ th 
+{ 
+  	background-color:#33FFBE;
+ 	text-align:center;
+}
+
+tbody > tr:nth-child(odd)
+{
+    background-color:#EEEEEE;
+}
+
+tbody > tr:nth-child(even)
+{
+    background-color:#B9D7CE;
+}
