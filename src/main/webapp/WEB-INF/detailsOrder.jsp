@@ -30,7 +30,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><c:out value="${ order.client.firstName }" /><c:out value="${ order.client.lastName }" /></td>
+					<td><c:out value="${ order.client.firstName } " /><c:out value="${ order.client.lastName }" /></td>
 					<td><c:out value="${ order.typePresta }" /></td>
 					<td><c:out value="${ order.designation }" /></td>
 					<td><c:out value="${ order.nbDays }" /></td>
