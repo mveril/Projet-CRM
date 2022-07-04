@@ -49,8 +49,8 @@
 				 <input type="text" id="phone" name="phone" value="${ client.phone }" />
 				<br/>
 				
-				<label for="address"> Adresse </label> 
-				 <input type="text" id="address" name="address" value="${ client.adresse}" />
+				<label for="address"> Address </label> 
+				 <input type="text" id="address" name="address" value="${ client.address}" />
 				<br/>
 				
 				<label for="zipCode"> ZipCode</label> 

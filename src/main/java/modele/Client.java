@@ -8,7 +8,7 @@ public class Client {
     private String lastName;
     private String email;
     private String phone;
-    private String adresse;
+    private String address;
     private String zipCode;
     private String country;
     private String city ;
@@ -19,7 +19,7 @@ public class Client {
     public Client() { 
     }
     
-	public Client(String companyName, String firstName, String lastName, String email, String phone, String adresse,
+	public Client(String companyName, String firstName, String lastName, String email, String phone, String address,
 			String zipCode, String country, String city, long state) {
 		super();
 		this.companyName = companyName;
@@ -27,7 +27,7 @@ public class Client {
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		this.adresse = adresse;
+		this.address = address;
 		this.zipCode = zipCode;
 		this.country = country;
 		this.city = city;
@@ -90,12 +90,12 @@ public class Client {
 		this.phone = phone;
 	}
 
-	public String getAdresse() {
-		return adresse;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getZipCode() {
@@ -133,7 +133,7 @@ public class Client {
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", company=" + companyName + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", phone=" + phone + ", adresse=" + adresse + ", zipCode=" + zipCode
+				+ ", email=" + email + ", phone=" + phone + ", adresse=" + address + ", zipCode=" + zipCode
 				+ ", country=" + country + ", city=" + city + ", state=" + state + "]";
 	}
 

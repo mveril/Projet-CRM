@@ -153,7 +153,7 @@ public class ClientValidator {
 		if(error != null) {
 			map.put("phone", error);			
 		}
-		error= ClientValidator.validateAdress(client.getAdresse());
+		error= ClientValidator.validateAdress(client.getAddress());
 		if(error != null) {
 			map.put("adress", error);			
 		}

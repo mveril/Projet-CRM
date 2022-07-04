@@ -40,7 +40,7 @@
 					<td><c:out value="${ client.companyName }"/></td>
 					<td><c:out value="${ client.email }"/></td>
 					<td><c:out value="${ client.phone }"/></td>
-					<td><c:out value="${ client.adresse }"/></td>
+					<td><c:out value="${ client.address }"/></td>
 					<td><c:out value="${ client.zipCode }"/></td>
 					<td><c:out value="${ client.country }"/></td>
 					<td><c:out value="${ client.city }"/></td>

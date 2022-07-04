@@ -39,7 +39,7 @@ public class ClientDaoImpl implements Dao<Client> {
 			pst.setString( 3, client.getLastName() );
 			pst.setString( 4, client.getEmail() );
 			pst.setString( 5, client.getPhone() );
-			pst.setString( 6, client.getAdresse() );
+			pst.setString( 6, client.getAddress() );
 			pst.setString( 7, client.getZipCode() );
 			pst.setString( 8, client.getCity());
 			pst.setString( 9, client.getCountry());
@@ -79,7 +79,7 @@ public class ClientDaoImpl implements Dao<Client> {
 			pst.setString( 2, client.getFirstName() );
 			pst.setString( 3, client.getLastName() );
 			pst.setString( 4, client.getPhone() );
-			pst.setString( 5, client.getAdresse() );
+			pst.setString( 5, client.getAddress() );
 			pst.setString( 6, client.getZipCode() );
 			pst.setString( 7, client.getCity());
 			pst.setString( 8, client.getCountry());
@@ -178,7 +178,7 @@ public class ClientDaoImpl implements Dao<Client> {
 		c.setLastName(resultSet.getString("lastName"));
 		c.setEmail(resultSet.getString("email") );
 		c.setPhone(resultSet.getString("phone") );
-		c.setAdresse(resultSet.getString("address") );
+		c.setAddress(resultSet.getString("address") );
 		c.setZipCode(resultSet.getString("zipCode"));
 		c.setCity(resultSet.getString("City"));
 		c.setCountry(resultSet.getString("country"));

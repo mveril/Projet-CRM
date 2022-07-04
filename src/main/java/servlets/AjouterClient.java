@@ -52,7 +52,7 @@ public class AjouterClient extends HttpServlet {
 		String lastName=request.getParameter("lastName");
         String email=request.getParameter("email");
         String phone=request.getParameter("phone");
-        String adresse=request.getParameter("address");
+        String address=request.getParameter("address");
         String zipcode=request.getParameter("zipCode");
         String city=request.getParameter("city");
         String country=request.getParameter("country");
@@ -68,7 +68,7 @@ public class AjouterClient extends HttpServlet {
         client.setLastName(lastName);
         client.setEmail(email);
         client.setPhone(phone);
-        client.setAdresse(adresse);
+        client.setAddress(address);
         client.setZipCode(zipcode);
         client.setCity(city);
         client.setCountry(country);
