@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+    
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +12,21 @@
 <body>
 
 
-<div class="form">
-	
-		<form method="post" action="<c:url value="/modifierClient"><c:param name="id" value="${client.id}"/></c:url>">
+<c:import url="/WEB-INF/menu.jsp" />
+
+
+
+	<div class="form">
+		<form method="post" action="<c:url value="/ajouterClient"/>">
+
 			<fieldset>
-				<legend> Modifier un client </legend>
-				
+				<legend> Creer un client </legend>
 				
 				<br/>
 				
 				
 			    <label for="companyName"> companyName </label> 
-				<input type="text" id="companyName" name="companyName" value="${client.companyName}" />
+				<input type="text" id="companyName" name="companyName" value="${ client.companyName}" />
 				<br/> 
 				
 
@@ -49,8 +51,8 @@
 				 <input type="text" id="phone" name="phone" value="${ client.phone }" />
 				<br/>
 				
-				<label for="address"> Address </label> 
-				 <input type="text" id="address" name="address" value="${ client.address}" />
+				<label for="address"> Adresse </label> 
+				 <input type="text" id="address" name="address" value="${ client.adress}" />
 				<br/>
 				
 				<label for="zipCode"> ZipCode</label> 
@@ -74,10 +76,12 @@
 				
 				
 				
+			     
+					
 			</fieldset>
 
 			<input type="submit" value="Valider" /> <input type="reset"
-				value="Remettre à zero " />
+				value="Remettre ï¿½ zero " />
 
 
 

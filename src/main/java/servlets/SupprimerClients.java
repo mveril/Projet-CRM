@@ -13,7 +13,7 @@ import dao.DaoFactory;
 import modele.Client;
 
 
-@WebServlet("/supprimerClients")
+@WebServlet("/supprimerClient")
 public class SupprimerClients extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
