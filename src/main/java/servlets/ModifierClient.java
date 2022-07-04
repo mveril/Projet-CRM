@@ -24,9 +24,6 @@ public class ModifierClient extends HttpServlet {
 
     private Dao<Client> clientDao;
 	
-        
-
-
     
     public ModifierClient() {
         super();
