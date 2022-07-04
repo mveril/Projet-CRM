@@ -12,7 +12,7 @@
       	
       	<td><a href="<c:url value="/listeClients" />">Liste des clients</a></td>
       	
-      	<td><a href="<c:url value="/listeCommandes" />">Liste des commandes</a></td>
+      	<td><a href="<c:url value="/listeOrders" />">Liste des commandes</a></td>
     </tr>
     </thead>
     </table>
