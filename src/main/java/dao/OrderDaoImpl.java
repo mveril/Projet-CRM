@@ -20,7 +20,7 @@ public class OrderDaoImpl implements Dao<Order> {
     private static final String SQL_SELECT_BY_ID = "SELECT * FROM Orders WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM Orders WHERE id = ? ";
 
-	private static final String SQL_UPDATE = "UPDATE Orders SET clientId=?, typePresta=?, designation=?, nbDays=?,unitPrice=?,state=? WHERE id = ?";
+	private static final String SQL_UPDATE = "UPDATE Orders SET clientId=?, typePresta=?, designation=?, nbDays=?, unitPrice=?, state=? WHERE id=?";
 
 	private DaoFactory factory;
 
@@ -29,19 +29,19 @@ public class OrderDaoImpl implements Dao<Order> {
 	}
 
 	@Override
-	public void creer(Order Order) throws DaoException {
+	public void creer(Order order) throws DaoException {
 		Connection con=null;
 		try {
 			con = factory.getConnection();
 
 			PreparedStatement pst = con.prepareStatement( SQL_INSERT, Statement.RETURN_GENERATED_KEYS );
 
-			pst.setLong( 1, Order.getClient().getId() );
-			pst.setString( 2, Order.getTypePresta());
-			pst.setString( 3, Order.getDesignation() );
-			pst.setLong( 4, Order.getNbDays());
-			pst.setFloat( 5, Order.getUnitPrice());
-			pst.setLong( 6, Order.getState());
+			pst.setLong( 1, order.getClient().getId() );
+			pst.setString( 2, order.getTypePresta());
+			pst.setString( 3, order.getDesignation() );
+			pst.setLong( 4, order.getNbDays());
+			pst.setFloat( 5, order.getUnitPrice());
+			pst.setLong( 6, order.getState());
 
 
 			int statut = pst.executeUpdate();
@@ -51,7 +51,7 @@ public class OrderDaoImpl implements Dao<Order> {
             }
             ResultSet rsKeys = pst.getGeneratedKeys();
             if ( rsKeys.next() ) {
-                Order.setId( rsKeys.getLong( 1 ) );
+                order.setId( rsKeys.getLong( 1 ) );
             } else {
                 throw new DaoException( "Echec création Order (ID non retourné)" );
             }
@@ -68,7 +68,7 @@ public class OrderDaoImpl implements Dao<Order> {
 
 	@Override
 	public Order trouver(long id) throws DaoException {
-		Order            Order=null;
+		Order            order=null;
 		Connection        con=null;
 		PreparedStatement pst=null;
 		ResultSet         rs=null;
@@ -78,7 +78,7 @@ public class OrderDaoImpl implements Dao<Order> {
 			  pst.setLong(1, id);
 		      rs  = pst.executeQuery();
 		      if ( rs.next() ) {
-		    	  Order = map(rs);
+		    	  order = map(rs);
 		      }
 		      rs.close();
 		      pst.close();
@@ -87,12 +87,12 @@ public class OrderDaoImpl implements Dao<Order> {
 	    } finally {
 	    	factory.releaseConnection(con);
 		}
-		return Order;
+		return order;
 	}
 
 	@Override
 	public List<Order> lister() throws DaoException {
-		List<Order> listeOrders = new ArrayList<>();
+		List<Order> listeOrders = new ArrayList<Order>();
 		Connection   con=null;
 		try {
 			  con = factory.getConnection();
@@ -138,21 +138,23 @@ public class OrderDaoImpl implements Dao<Order> {
 		try {
 			con = factory.getConnection();
 
-			PreparedStatement pst = con.prepareStatement( SQL_UPDATE );
-
-			pst.setLong( 1, order.getClient().getId() );
-			pst.setString( 2, order.getTypePresta());
-			pst.setLong( 3, order.getNbDays() );
-			pst.setLong( 4, order.getState());
-			pst.setFloat( 5, order.getUnitPrice());
-			pst.setFloat( 6, order.getUnitPrice());
-			pst.setLong( 7, order.getId() );
-
+			PreparedStatement pst = con.prepareStatement(SQL_UPDATE);
+			
+			pst.setLong(1, order.getClient().getId());
+			pst.setString(2, order.getTypePresta());
+			pst.setString(3, order.getDesignation());
+			pst.setLong(4, order.getNbDays());
+			pst.setFloat(5, order.getUnitPrice());
+			pst.setLong(6, order.getState());
+			
+			pst.setLong(7, order.getId());
+			
 			int statut = pst.executeUpdate();
-
-            if ( statut == 0 ) {
-                throw new DaoException( "Echec mise à jour Order" );
-            }
+			
+			if(statut == 0) {
+				throw new DaoException("Echec mise à jour order");
+			}
+			
 			pst.close();
 
 	    } catch(SQLException ex) {
@@ -170,9 +172,9 @@ public class OrderDaoImpl implements Dao<Order> {
         Order o = new Order();
         o.setId( resultSet.getLong( "id" ) );
 
-        Dao<Client> dao = DaoFactory.getInstance().getClientDao();
+        Dao<Client> clientDao = DaoFactory.getInstance().getClientDao();
         try {
-			o.setClient(dao.trouver(resultSet.getLong( "clientId" )));
+			o.setClient(clientDao.trouver(resultSet.getLong( "clientId" )));
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

@@ -18,7 +18,7 @@
 	
 		<c:choose>
 			<c:when test="${ empty orders }">
-				<p>Aucune Commande trouvée...</p>
+				<p>Aucune Commande trouvï¿½e...</p>
 			</c:when>
 			<c:otherwise>
 				<table>

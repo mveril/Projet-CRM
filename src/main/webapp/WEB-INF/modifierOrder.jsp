@@ -26,18 +26,27 @@
 						<c:out value="${ client.firstName }" /> <c:out value="${ client.lastName }" />
 						</option>
 					</c:forEach>
-				</select> <br /> <label for="typePresta"> typePresta </label> <input
-					type="text" id="typePresta" name="typePresta"
-					value="${order.typePresta }" /> <br /> <label for="designation">
-					designation </label> <input type="text" id="designation"
-					name="nbPagesLivre" value="${ order.designation }" /> <br /> <label
-					for="nbDays">nbDays </label> <input type="text" id="nbDays"
-					name="nbDays" value="${ order.nbDays }" /> <br /> <label
-					for="unitPrice">unitPrice </label> <input type="text"
-					id="unitPrice" name="unitPrice" value="${ order.unitPrice }" /> <br />
-
-				<label for="state">state </label> <input type="text" id="state"
-					name="state" value="${ order.state }" /> <br />
+				</select>  
+				<div>
+					<label for="typePresta"> typePresta </label> 
+					<input type="text" id="typePresta" name="typePresta" value="${order.typePresta }" /> 
+				</div>
+				<div>
+					<label for="designation"> designation </label> 
+					<input type="text" id="designation" name="designation" value="${ order.designation }" />
+				</div>
+				<div>
+					<label for="nbDays">nbDays </label> 
+					<input type="text" id="nbDays" name="nbDays" value="${ order.nbDays }" />
+				</div>
+				<div>
+					<label for="unitPrice">unitPrice </label>
+					<input type="text" id="unitPrice" name="unitPrice" value="${ order.unitPrice }" />
+				</div>
+				<div>
+					<label for="state">state </label>
+					<input type="text" id="state" name="state" value="${ order.state }" />
+				</div>    
 
 			</fieldset>
 
@@ -45,10 +54,7 @@
 
 		</form>
 
-
 	</div>
-
-
 
 </body>
 </html>

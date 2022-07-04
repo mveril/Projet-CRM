@@ -28,7 +28,6 @@ public class ModifierOrder extends HttpServlet {
 
 	public ModifierOrder() {
 		super();
-
 		orderDao = DaoFactory.getInstance().getOrderDao();
 		clientDao = DaoFactory.getInstance().getClientDao();
 
@@ -54,19 +53,17 @@ public class ModifierOrder extends HttpServlet {
 		
 		Long id = Long.parseLong(request.getParameter("id"));
 		
-		String typePresta=request.getParameter("typePresta");
-		String designation =request.getParameter("designation");
-	    int nbDays=Integer.parseInt(request.getParameter("nbDays"));
-	    Float unitPrice =Float.parseFloat(request.getParameter("unitPrice"));
-	    long state =Long.parseLong(request.getParameter("state"));
-	    long idClient = Long.parseLong(request.getParameter("clientId"));
+		String typePresta = request.getParameter("typePresta");
+		String designation = request.getParameter("designation");
+	    int nbDays = Integer.parseInt(request.getParameter("nbDays"));
+	    Float unitPrice = Float.parseFloat(request.getParameter("unitPrice"));
+	    long state = Long.parseLong(request.getParameter("state"));
+	    long clientId = Long.parseLong(request.getParameter("clientId"));
+
 	    
-	    
-		Order order = null;
-	   
 	    try {
-	    	order = orderDao.trouver(id);
-	    	Client client= clientDao.trouver(id);
+	    	Order order = orderDao.trouver(id);
+	    	Client client= clientDao.trouver(clientId);
 			
 			order.setClient(client);		
 			order.setTypePresta(typePresta);
