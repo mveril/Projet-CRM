@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,17 +11,19 @@ import dao.Dao;
 import dao.DaoException;
 import dao.DaoFactory;
 import modele.Client;
+import modele.Order;
 
 
-@WebServlet("/detailsClient")
-public class DetailsClient extends HttpServlet {
+@WebServlet("/detailsOrder")
+public class DetailsOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private Dao<Client> clientDao;
-  
-    public DetailsClient() {
-        super();
-        clientDao = DaoFactory.getInstance().getClientDao();
+	private Dao<Order> orderDao;
+   
+    public DetailsOrder() {
+    	super();
+    	orderDao = DaoFactory.getInstance().getOrderDao();
+    	  
     }
 
 	
@@ -31,19 +32,17 @@ public class DetailsClient extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id"));
 		
 		try {
-			Client clientRecherche = clientDao.trouver(id);
-			request.setAttribute("client", clientRecherche);
+			Order orderRecherche = orderDao.trouver(id);
+			request.setAttribute("order", orderRecherche);
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
 		
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/detailsClient.jsp").forward(request, response);
-
+		this.getServletContext().getRequestDispatcher("/WEB-INF/detailsOrder.jsp").forward(request, response);
 		
 	}
 
-
-
+	
 
 }
