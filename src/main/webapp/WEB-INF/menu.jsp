@@ -8,12 +8,15 @@
     <table class="menu">
     <thead>
     <tr>
-      	<td><a href="<c:url value="/" />">Accueil</a></td>
+      	<td class="home"><a href="<c:url value="/" />">Accueil</a></td>
       	
-      	<td><a href="<c:url value="/listeClients" />">Liste des clients</a></td>
+      	<td class="listeClient"><a href="<c:url value="/listeClients" />">Liste des clients</a></td>
       	
-      	<td><a href="<c:url value="/listeOrders" />">Liste des commandes</a></td>
+      	<td class="listeCommande"><a href="<c:url value="/listeOrders" />">Liste des commandes</a></td>
     </tr>
     </thead>
     </table>
+    
+    
 </nav>
+

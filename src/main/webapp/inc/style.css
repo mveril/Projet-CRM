@@ -1,6 +1,20 @@
+.index {
+	background-image: url('https://blog.reedexpo.fr/wp-content/uploads/2020/11/type-de-relation-client-call-center-scaled.jpg');
+	background-repeat: no-repeat;
+	background-position: inherit;
+	background-size: cover;
+}
+
+.titre{
+	text-align:center;
+	color : #646464
+}
+
+
+
 .menu
 {
-	background-color: #33FFBE;
+	background-color: #00ACD6;
 	align-content: center;
 	align-self: center;
 	width: 100%;

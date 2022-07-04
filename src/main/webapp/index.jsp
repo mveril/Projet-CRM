@@ -7,7 +7,10 @@
 <meta charset="ISO-8859-1">
 <title>Evaluation CRM - Clients et Commandes</title>
 </head>
-<body>
+<body class="index">
 <c:import url="/WEB-INF/menu.jsp" />
+
+    	<h1 class="titre">Bienvenue sur votre gestionnaire relation client</h1>
+
 </body>
 </html>
