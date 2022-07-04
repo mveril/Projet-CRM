@@ -32,8 +32,8 @@ public class DetailsOrder extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id"));
 		
 		try {
-			Order order = orderDao.trouver(id);
-			request.setAttribute("order", order);
+			Order orderRecherche = orderDao.trouver(id);
+			request.setAttribute("order", orderRecherche);
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

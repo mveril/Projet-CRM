@@ -31,8 +31,8 @@ public class DetailsClient extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id"));
 		
 		try {
-			Client client = clientDao.trouver(id);
-			request.setAttribute("client", client);
+			Client clientRecherche = clientDao.trouver(id);
+			request.setAttribute("client", clientRecherche);
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

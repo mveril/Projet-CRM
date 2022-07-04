@@ -12,6 +12,7 @@
 </head>
 <body>
 
+			<c:import url="/WEB-INF/menu.jsp" />
 		
 	
 		<div> Détails de ${ client.firstName } ${ client.lastName } </div>
@@ -50,6 +51,9 @@
 
 			</c:otherwise>
 	</c:choose>		
+	
+	
+	<div><a href="<c:url value="/ListeClients" />">Retour à la liste des clients</a></div>
 	
 </body>
 </html>

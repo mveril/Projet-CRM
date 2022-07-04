@@ -10,6 +10,9 @@
 </head>
 <body>
 
+	<c:import url="/WEB-INF/menu.jsp" />
+	
+
 	<div>Détail de la commande</div>
 	
 			<table>
@@ -38,6 +41,9 @@
 				</tr>
 			</tbody>
 		</table>
+		
+			<div><a href="<c:url value="/ListeOrders" />">Retour à la liste des commandes</a></div>
+		
 
 </body>
 </html>
