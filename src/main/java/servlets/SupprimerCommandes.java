@@ -10,36 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import dao.DaoException;
 import dao.DaoFactory;
-import modele.Client;
+import modele.Order;
 
 
-@WebServlet("/supprimerClients")
-public class SupprimerClients extends HttpServlet {
+@WebServlet("/supprimerCommandes")
+public class SupprimerCommandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    private Dao<Client> clientDao;
-	
-	public SupprimerClients() {
-        super();
-        clientDao = DaoFactory.getInstance().getClientDao();
-    }
+	private Dao<Order> orderDao;
 
+    public SupprimerCommandes() {
+        super();
+        orderDao = DaoFactory.getInstance().getOrderDao();
+
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		var id = Long.parseLong(request.getParameter("id"));
-	
-	try
-	{
-		clientDao.supprimer(id);
-	}
-	
-	catch (DaoException e) 
-	{
-		e.printStackTrace();
-	}
-	
-	response.sendRedirect(request.getContextPath()+"/listeClients");
-
+		
+		try
+		{
+			orderDao.supprimer(id);
+		}
+		
+		catch (DaoException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect(request.getContextPath()+"/listeCommandes");
 	}
 }
