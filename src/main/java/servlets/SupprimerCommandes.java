@@ -13,7 +13,7 @@ import dao.DaoFactory;
 import modele.Order;
 
 
-@WebServlet("/supprimerCommandes")
+@WebServlet("/supprimerOrder")
 public class SupprimerCommandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,6 +39,6 @@ public class SupprimerCommandes extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/listeCommandes");
+		response.sendRedirect(request.getContextPath()+"/listeOrders");
 	}
 }
