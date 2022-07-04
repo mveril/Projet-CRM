@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.Dao;
+import dao.DaoException;
+import dao.DaoFactory;
+
+import modele.Client;
+
+
 /**
  * Servlet implementation class ModifierClient
  */
@@ -14,28 +21,83 @@ import javax.servlet.http.HttpServletResponse;
 public class ModifierClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
+    private Dao<Client> clientDao;
+	
+    
     public ModifierClient() {
         super();
-        // TODO Auto-generated constructor stub
+       clientDao=DaoFactory.getInstance().getClientDao();
+       
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		 long id = Long.parseLong(request.getParameter("id"));
+			
+			try {
+				request.setAttribute("client", clientDao.trouver(id));
+			} catch (DaoException e) {
+				e.printStackTrace();
+			}
+			
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierClient.jsp").forward(request, response);
+			
+		
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+	
+		
+		
+		String companyName=request.getParameter("companyName");
+		String firstName=request.getParameter("firstName");
+		String lastName=request.getParameter("lastName");
+        String email=request.getParameter("email");
+        String phone=request.getParameter("phone");
+        String adresse=request.getParameter("address");
+        String zipcode=request.getParameter("zipCode");
+        String city=request.getParameter("city");
+        String country=request.getParameter("country");
+        
+        String stateStr=request.getParameter("state");
+        var state = Long.parseLong(stateStr);
+      
+        var clientIdStr = request.getParameter("id");
+	    var clientId = Long.parseLong(clientIdStr);
+        
+        try {
+        	
+        	Client client= clientDao.trouver(clientId);	  
+        	client.setCompany(companyName);
+            client.setFirstName(firstName);
+            client.setLastName(lastName);
+            client.setEmail(email);
+            client.setPhone(phone);
+            client.setAdresse(adresse);
+            client.setZipCode(zipcode);
+            client.setCity(city);
+            client.setCountry(country);
+            client.setState(state);
+        	
+           	
+            clientDao.update(client);
+			
+			
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
+        response.sendRedirect(request.getContextPath()+ "/ListeOrders");
+        		doGet(request, response);
+		
 	}
 
 }
