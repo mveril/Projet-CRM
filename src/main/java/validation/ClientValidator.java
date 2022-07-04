@@ -8,7 +8,7 @@ import modele.Client;
 public class ClientValidator {
 	static String validateCompanyName(String companyName) {
 		if(companyName == null) {
-			return "Le nom de la companie doit être non nul";
+			return "Vous devez rentrer le nom de la compagnie";
 		} else {
 			var max = 100;
 			if(companyName.length() > max) {
@@ -21,7 +21,7 @@ public class ClientValidator {
 	}
 	static String validateFirstName(String firstName) {
 		if(firstName == null) {
-			return "Le prénom doit être non nul";
+			return "Vous devez rentrer un prénom";
 		} else {
 			var max = 100;
 			if(firstName.length() > max) {
@@ -35,7 +35,7 @@ public class ClientValidator {
 	
 	static String validateLastName(String lastName) {
 		if(lastName == null) {
-			return "Le nom de famille doit être non nul";
+			return "Vous devez rentrer un nom de famille";
 		} else {
 			var max = 100;
 			if(lastName.length() > max) {
@@ -49,7 +49,7 @@ public class ClientValidator {
 	
 	static String validateEmail(String email) {
 		if(email == null) {
-			return "L'email doit être non nul";
+			return "Vous devez rentrer un email";
 		} else {
 			var max = 100;
 			if(email.length() > max) {
@@ -81,7 +81,7 @@ public class ClientValidator {
 				return "Le numéro de téléphone doit être une série de maximum 15 chiffres";
 			}
 		} else {
-			return "Le numéro de téléphone ne doit pas être nul";
+			return "Vous devez rentrer un numéro de téléphone";
 		}
 	}
 	
@@ -89,16 +89,16 @@ public class ClientValidator {
 		if(address != null) {
 			return null;
 		} else {
-			return "L'adresse ne doit pas être nul";
+			return "Vous devez rentrer une adresse";
 		}
 	}
 	static String validateCity(String city) {
 		if(city == null) {
-			return "Le nom de la vile doit être non nul";
+			return "Vous devez rentrer une ville";
 		} else {
 			var max = 15;
 			if(city.length() > max) {
-				return String.format("Le nom de la vile doit avoir une taille inférieur à %d !",max); 
+				return String.format("Le nom de la ville doit avoir une taille inférieur à %d !",max); 
 			}
 			else {
 				return null;
@@ -108,11 +108,11 @@ public class ClientValidator {
 	
 	static String validateCountry(String city) {
 		if(city == null) {
-			return "Le nom de la vile doit être non nul";
+			return "Vous devez rentrer un pays";
 		} else {
 			var max = 15;
 			if(city.length() > max) {
-				return String.format("Le nom de la vile doit avoir une taille inférieur à %d !",max); 
+				return String.format("Le nom du pays doit avoir une taille inférieur à %d !",max); 
 			}
 			else {
 				return null;

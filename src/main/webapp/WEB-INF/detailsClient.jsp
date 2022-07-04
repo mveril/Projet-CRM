@@ -53,7 +53,7 @@
 	</c:choose>		
 	
 	
-	<div><a href="<c:url value="/ListeClients" />">Retour à la liste des clients</a></div>
+	<div><a href="<c:url value="/listeClients" />">Retour à la liste des clients</a></div>
 	
 </body>
 </html>
