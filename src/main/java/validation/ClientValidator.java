@@ -141,6 +141,8 @@ public class ClientValidator {
 			else {
 				return null;
 			}
+		} else {
+			return null;
 		}
 	}
 	
