@@ -12,18 +12,18 @@ import modele.Client;
 import modele.Order;
 
 public class OrderDaoImpl implements Dao<Order> {
-	
-	private static final String SQL_INSERT       = "INSERT INTO Order(id_client, typePresta, designation, nbDays,unitPrice,state) VALUES(?,?,?,?,?,?,?)";
-	
 
-	private static final String SQL_SELECT       = "SELECT id, id_client, typePresta, designation, nbDays,unitPrice,state FROM Order";
-  private static final String SQL_SELECT_BY_ID = "SELECT id, id_client, typePresta, designation, nbDays,unitPrice,state FROM Order WHERE id = ?";
-	private static final String SQL_DELETE_BY_ID = "DELETE FROM Order WHERE id = ? ";
-	
-	private static final String SQL_UPDATE = "UPDATE Order SET id_client=?, typePresta=?, designation=?, nbDays=?,unitPrice=?,state=? WHERE id = ?";
-	
+	private static final String SQL_INSERT       = "INSERT INTO Orders(clientId, typePresta, designation, nbDays,unitPrice,state) VALUES(?,?,?,?,?,?,?)";
+
+
+	private static final String SQL_SELECT       = "SELECT id, clientId, typePresta, designation, nbDays,unitPrice,state FROM Orders";
+    private static final String SQL_SELECT_BY_ID = "SELECT id, clientId, typePresta, designation, nbDays,unitPrice,state FROM Orders WHERE id = ?";
+	private static final String SQL_DELETE_BY_ID = "DELETE FROM Orders WHERE id = ? ";
+
+	private static final String SQL_UPDATE = "UPDATE Orders SET clientId=?, typePresta=?, designation=?, nbDays=?,unitPrice=?,state=? WHERE id = ?";
+
 	private DaoFactory factory;
-	
+
 	public OrderDaoImpl(DaoFactory factory) {
 		this.factory = factory;
 	}
@@ -33,7 +33,7 @@ public class OrderDaoImpl implements Dao<Order> {
 		Connection con=null;
 		try {
 			con = factory.getConnection();
-			
+
 			PreparedStatement pst = con.prepareStatement( SQL_INSERT, Statement.RETURN_GENERATED_KEYS );
 
 			pst.setLong( 1, Order.getClient().getId() );
@@ -42,8 +42,8 @@ public class OrderDaoImpl implements Dao<Order> {
 			pst.setFloat( 4, Order.getUnitPrice());
 			pst.setFloat( 5, Order.getTotalExcludeTaxe());
 			pst.setFloat( 6, Order.getTotalExcludeTaxe());
-			
-			
+
+
 			int statut = pst.executeUpdate();
 
             if ( statut == 0 ) {
@@ -57,13 +57,13 @@ public class OrderDaoImpl implements Dao<Order> {
             }
             rsKeys.close();
 			pst.close();
-			
+
 	    } catch(SQLException ex) {
 	    	throw new DaoException("Echec cr�ation Order",ex);
 	    } finally {
 	    	factory.releaseConnection(con);
 		}
-		
+
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class OrderDaoImpl implements Dao<Order> {
 
 	@Override
 	public List<Order> lister() throws DaoException {
-		List<Order> listeOrders = new ArrayList<Order>();
+		List<Order> listeOrders = new ArrayList<>();
 		Connection   con=null;
 		try {
 			  con = factory.getConnection();
@@ -128,16 +128,16 @@ public class OrderDaoImpl implements Dao<Order> {
 	    } finally {
 	    	factory.releaseConnection(con);
 		}
-		
+
 	}
-	
+
 
 	@Override
 	public void update(Order Order) throws DaoException {
 		Connection con=null;
 		try {
 			con = factory.getConnection();
-			
+
 			PreparedStatement pst = con.prepareStatement( SQL_UPDATE );
 
 			pst.setLong( 1, Order.getClient().getId() );
@@ -147,21 +147,21 @@ public class OrderDaoImpl implements Dao<Order> {
 			pst.setFloat( 5, Order.getUnitPrice());
 			pst.setFloat( 6, Order.getUnitPrice());
 			pst.setLong( 7, Order.getId() );
-			
+
 			int statut = pst.executeUpdate();
 
             if ( statut == 0 ) {
                 throw new DaoException( "Echec mise � jour Order" );
             }
 			pst.close();
-			
+
 	    } catch(SQLException ex) {
 	    	throw new DaoException("Echec mise � jour Order",ex);
 	    } finally {
 	    	factory.releaseConnection(con);
 		}
 	}
-	
+
     /*
      * Mapping (correspondance) entre un ResultSet et un JavaBean
      * M�thode utilitaire (interne)
@@ -169,20 +169,20 @@ public class OrderDaoImpl implements Dao<Order> {
     private static Order map( ResultSet resultSet ) throws SQLException {
         Order o = new Order();
         o.setId( resultSet.getLong( "id" ) );
-        
+
         Dao<Client> dao = DaoFactory.getInstance().getClientDao();
         try {
-			o.setClient(dao.trouver(resultSet.getLong( "id_client" )));
+			o.setClient(dao.trouver(resultSet.getLong( "clientId" )));
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-        
+
         o.setDesignation(resultSet.getString( "designation"));
         o.setTypePresta(resultSet.getString( "typePresta" ));
         o.setNbDays(resultSet.getInt( "nbDays" ));
         o.setState(resultSet.getLong( "state" ));
-        o.setUnitPrice(resultSet.getFloat( "unitPrice" ));  
-        
+        o.setUnitPrice(resultSet.getFloat( "unitPrice" ));
+
         return o;
     }
 
