@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Dao<T> {
 
-	void         creer( T Order ) throws DaoException;
+	void         creer( T item ) throws DaoException;
 
 	T       trouver( long id ) throws DaoException;
 
@@ -15,6 +15,6 @@ public interface Dao<T> {
 
     void         supprimer( long id ) throws DaoException;
     
-    void         update( T order ) throws DaoException;
+    void         update( T item ) throws DaoException;
 
 }
