@@ -75,7 +75,7 @@ public class ClientValidator {
 	
 	public static String validatePhone(String phone) {
 		if(phone != null) {
-			if(phone.matches("\\d{,15}")){
+			if(phone.matches("\\d{1,15}")){
 				return null;
 			} else {
 				return "Le numéro de téléphone doit être une série de maximum 15 chiffres";
