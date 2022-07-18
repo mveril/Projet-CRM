@@ -98,7 +98,7 @@ public class AjouterClient extends HttpServlet {
 		}
 		Long state = (long)-1;
         String stateStr=request.getParameter("state");
-		erreur = ClientValidator.validateCity("state");
+		erreur = ClientValidator.validateState("state");
 		if(erreur != null) {
 			erreurs.put("state", erreur);
 		} else {
