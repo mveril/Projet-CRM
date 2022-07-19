@@ -46,7 +46,7 @@
 				<br/>
 				
 				<label for="address"> Adresse </label> 
-				 <input type="text" id="address" name="address" value="${ client.adress}" />
+				 <input type="text" id="address" name="address" value="${ client.address}" />
 				 <span class="erreur">${ erreurs['address'] }</span>
 				<br/>
 				
