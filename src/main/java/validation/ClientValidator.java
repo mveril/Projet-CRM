@@ -56,7 +56,7 @@ public class ClientValidator {
 				return String.format("La taille maximale de l'email doit être de %d",max); 
 			}
 			else {
-				if(email.matches("([^.@]+)(\\\\.[^.@]+)*@([^.@]+\\\\.)+([^.@]+)")) {
+				if(email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
 					return null;
 				} else {
 					return "L'email n'est pas valide";
