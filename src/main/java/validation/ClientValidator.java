@@ -1,11 +1,7 @@
 package validation;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import modele.Client;
-
-public class ClientValidator extends ValidatiorBase {
+public class ClientValidator extends ValidatorBase {
 	public void validateCompanyName(String companyName) {
 		if(companyName.isEmpty()) {
 			errors.put("companyName", "Vous devez rentrer le nom de la compagnie");
@@ -67,9 +63,14 @@ public class ClientValidator extends ValidatiorBase {
 		}
 	}
 	
-	public void validateAdress(String address) {
+	public void validateAddress(String address) {
 		if(address.isEmpty()) {
 			errors.put("address","Vous devez rentrer une adresse");
+		} else {
+			var max = 150;
+			if(address.length() > max) {
+				errors.put("address", String.format("L'adresse doit avoir une taille inférieure à %d !",max));
+			}
 		}
 	}
 	public void validateCity(String city) {
@@ -89,7 +90,7 @@ public class ClientValidator extends ValidatiorBase {
 		} else {
 			var max = 15;
 			if(country.length() > max) {
-				errors.put("country", String.format("Le nom du pays doit avoir une taille inférieur à %d !",max)); 
+				errors.put("country", String.format("Le nom du pays doit pas dépasser %d caractères !",max)); 
 			}
 		}
 	}
@@ -97,8 +98,8 @@ public class ClientValidator extends ValidatiorBase {
 	public void validateState(String state) {
 		var min = 0;
 		var max = 1;
-		if(state != null && state.matches(String.format("^[%d-%d]$",min,max))) {
-			errors.put("state", String.format("L'état du client doit être entre %d est %d", min, max));
+		if(!state.matches(String.format("^[%d-%d]$",min,max))) {
+			errors.put("state", String.format("L'état du client doit être entre %d et %d", min, max));
 		}
 	}
 }

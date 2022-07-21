@@ -12,6 +12,7 @@ import dao.DaoException;
 import dao.DaoFactory;
 import modele.Client;
 import modele.Order;
+import validation.OrderValidator;
 
 
 @WebServlet("/ajouterOrder")
@@ -43,37 +44,96 @@ public class AjouterOrder extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		Client client = null;
 		
+		String typePresta=request.getParameter("typePresta");
+		var validator = new OrderValidator();
+		validator.validateTypePresta(typePresta);
+		
+		String designation = request.getParameter("designation");
+		validator.validateDesignation(designation);
+		
+		String nbDaysStr = request.getParameter("nbDays");
+		validator.validateNbDays(nbDaysStr);
+		
+		String unitPriceStr = request.getParameter("unitPrice");
+		validator.validateUnitPrice(unitPriceStr);
+		
+		Long state;
+        String stateStr=request.getParameter("state");
+		validator.validateStateOrder(stateStr);
+		var erreurs = validator.getErrors();
+		if(!erreurs.containsKey("state")) {
+			state = Long.parseLong(stateStr);
+		} else {
+			state = -1L;
+		}
+		
+		long nbDays;;
+		if(!erreurs.containsKey("nbDays")) {
+			nbDays = Long.parseLong(nbDaysStr);
+		} else {
+			nbDays = -1L;
+		}
+		
+		float unitPrice;
+		if(!erreurs.containsKey("unitPrice")) {
+			unitPrice = Float.parseFloat(unitPriceStr);
+		} else {
+			unitPrice = -1f;
+		}
+
+		
+		Client client = null;
 		Order order = new Order ();
 		
-		long idClient = Long.parseLong(request.getParameter("idClient"));
-		String typePresta = request.getParameter("typePresta");
-		String designation = request.getParameter("designation");
-		long nbDays = Long.parseLong(request.getParameter("nbDays"));
-		float unitPrice = Float.parseFloat(request.getParameter("unitPrice"));
-		long state = Long.parseLong(request.getParameter("state"));
 		
-		try
-		{
-			client = clientDao.trouver(idClient);
+		long clientId = Long.parseLong(request.getParameter("clientId"));
+		
+		 
+			try {
+				client = clientDao.trouver(clientId);
+				
+				order.setClient(client);
+				
+			} catch (DaoException e) {
+	            erreurs.put("clientId", "Le client n'existe pas." );
+	        }
 			
-			order.setClient(client);
 			order.setTypePresta(typePresta);
 			order.setDesignation(designation);
 			order.setNbDays(nbDays);
 			order.setUnitPrice(unitPrice);
 			order.setState(state);
 			
-			orderDao.creer(order);
-		}
-		catch (DaoException e)
-        {
-            e.printStackTrace();
-        }
+		if(erreurs.isEmpty()) {
+			try{
+				orderDao.creer(order);
+			} catch (DaoException e) {
+	            e.printStackTrace();
+	        }
+			
+	        response.sendRedirect(request.getContextPath()+"/listeOrders");
 
-        response.sendRedirect(request.getContextPath()+"/listeOrders");
+		} else {
+			request.setAttribute("order", order);
+			request.setAttribute("erreurs", erreurs);
+			request.setAttribute("resultat", "Echec de la sauvegarde de la commande.");
+			
+			
+			try
+			{
+				request.setAttribute("clients", clientDao.lister());
+			}
+			catch (DaoException e)
+	        {
+	            e.printStackTrace();
+	        }
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterOrder.jsp").forward(request, response);
+
+		}
+		
+
 		
 	}
 

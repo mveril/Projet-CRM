@@ -61,7 +61,7 @@
 				<br/>
 				
 				<label for="country"> Pays </label> 
-				 <input type="text" id="country" name="country"value="${ client.country }" />
+				 <input type="text" id="country" name="country" value="${ client.country }" />
 				 <span class="erreur">${ erreurs['country'] }</span>
 				<br/>
 				

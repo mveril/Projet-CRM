@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,18 +15,12 @@ import modele.Client;
 import validation.ClientValidator;
 
 
-/**
- * Servlet implementation class AjouterClient
- */
+
 @WebServlet("/ajouterClient")
 public class AjouterClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     * 
-     
-     */
+   
 	
 	private Dao<Client> clientDao;
 	   
@@ -61,19 +53,21 @@ public class AjouterClient extends HttpServlet {
         String phone=request.getParameter("phone");
 		validator.validatePhone(phone);
         String address=request.getParameter("address");
-		validator.validateAdress(address);
+		validator.validateAddress(address);
         String zipCode=request.getParameter("zipCode");
 		validator.validateZipCode(zipCode);
         String city=request.getParameter("city");
 		validator.validateCity(city);
         String country=request.getParameter("country");
-		validator.validateCity(country);
-		Long state = (long)-1;
+		validator.validateCountry(country);
+		Long state;
         String stateStr=request.getParameter("state");
-		validator.validateState("state");
+		validator.validateState(stateStr);
 		var erreurs = validator.getErrors();
 		if(!erreurs.containsKey("state")) {
 			state = Long.parseLong(stateStr);
+		} else {
+			state = -1L;
 		}
         
 		
