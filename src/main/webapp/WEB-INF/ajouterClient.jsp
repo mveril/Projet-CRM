@@ -42,7 +42,7 @@
 				
 				<label for="phone"> Telephone </label> 
 				 <input type="text" id="phone" name="phone" value="${ client.phone }" />
-				 <span class="erreur">${ erreurs['telephone'] }</span>
+				 <span class="erreur">${ erreurs['phone'] }</span>
 				<br/>
 				
 				<label for="address"> Adresse </label> 
@@ -52,22 +52,22 @@
 				
 				<label for="zipCode"> Code postal</label> 
 				 <input type="text" id="zipCode" name="zipCode" value="${ client.zipCode }" />
-				 <span class="erreur">${ erreurs['"zipCode"'] }</span>
+				 <span class="erreur">${ erreurs['zipCode'] }</span>
 				<br/>
 				
 				<label for="city"> Ville </label> 
 				 <input type="text" id="city" name="city" value="${ client.city }" />
-				 <span class="erreur">${ erreurs['"city"'] }</span>
+				 <span class="erreur">${ erreurs['city'] }</span>
 				<br/>
 				
 				<label for="country"> Pays </label> 
 				 <input type="text" id="country" name="country"value="${ client.country }" />
-				 <span class="erreur">${ erreurs['"country"'] }</span>
+				 <span class="erreur">${ erreurs['country'] }</span>
 				<br/>
 				
 				<label for="state"> Etat </label> 
 				 <input type="text" id="state" name="state" value="${ client.state }" />
-				 <span class="erreur">${ erreurs['"state"'] }</span>
+				 <span class="erreur">${ erreurs['state'] }</span>
 				<br/>
 				<p class="erreur">${ resultat }</p>
 					

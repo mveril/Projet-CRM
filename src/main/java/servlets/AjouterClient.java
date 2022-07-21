@@ -49,59 +49,30 @@ public class AjouterClient extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Map<String,String> erreurs = new HashMap<String,String>();
 		String companyName=request.getParameter("companyName");
-		var erreur = ClientValidator.validateCompanyName(companyName);
-		if(erreur != null) {
-			erreurs.put("companyName", erreur);
-		}
+		var validator = new ClientValidator();
+		validator.validateCompanyName(companyName);
 		String firstName=request.getParameter("firstName");
-		erreur = ClientValidator.validateFirstName(firstName);
-		if(erreur != null) {
-			erreurs.put("companyName", erreur);
-		}
+		validator.validateFirstName(firstName);
 		String lastName=request.getParameter("lastName");
-		erreur = ClientValidator.validateLastName(lastName);
-		if(erreur != null) {
-			erreurs.put("lastName", erreur);
-		}
+		validator.validateLastName(lastName);
         String email=request.getParameter("email");
-		erreur = ClientValidator.validateEmail(email);
-		if(erreur != null) {
-			erreurs.put("email", erreur);
-		}
+		validator.validateEmail(email);
         String phone=request.getParameter("phone");
-		erreur = ClientValidator.validatePhone(phone);
-		if(erreur != null) {
-			erreurs.put("phone", erreur);
-		}
+		validator.validatePhone(phone);
         String address=request.getParameter("address");
-		erreur = ClientValidator.validateAdress(address);
-		if(erreur != null) {
-			erreurs.put("address", erreur);
-		}
+		validator.validateAdress(address);
         String zipCode=request.getParameter("zipCode");
-		erreur = ClientValidator.validateZipCode(zipCode);
-		if(erreur != null) {
-			erreurs.put("zipCode", erreur);
-		}
+		validator.validateZipCode(zipCode);
         String city=request.getParameter("city");
-		erreur = ClientValidator.validateCity(city);
-		if(erreur != null) {
-			erreurs.put("city", erreur);
-		}
+		validator.validateCity(city);
         String country=request.getParameter("country");
-		erreur = ClientValidator.validateCity(country);
-		if(erreur != null) {
-			erreurs.put("country", erreur);
-		}
+		validator.validateCity(country);
 		Long state = (long)-1;
         String stateStr=request.getParameter("state");
-		erreur = ClientValidator.validateState("state");
-		if(erreur != null) {
-			erreurs.put("state", erreur);
-		} else {
+		validator.validateState("state");
+		var erreurs = validator.getErrors();
+		if(!erreurs.containsKey("state")) {
 			state = Long.parseLong(stateStr);
 		}
         
