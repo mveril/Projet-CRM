@@ -8,7 +8,7 @@ public class ClientValidator extends ValidatorBase {
 		} else {
 			var max = 100;
 			if(companyName.length() > max) {
-				errors.put("companyName", String.format("Le nom de la companie doit avoir une taille inférieur à %d !",max)); 
+				errors.put("companyName", String.format("Le nom de la compagnie ne doit pas dépasser %d caractères!",max)); 
 			}
 		}
 	}
@@ -18,7 +18,7 @@ public class ClientValidator extends ValidatorBase {
 		} else {
 			var max = 100;
 			if(firstName.length() > max) {
-				errors.put("firstName", String.format("Le prénom doit être de %d !",max)); 
+				errors.put("firstName", String.format("Le prénom ne doit pas dépasser %d caractères!",max)); 
 			}
 		}
 	}
@@ -29,7 +29,7 @@ public class ClientValidator extends ValidatorBase {
 		} else {
 			var max = 100;
 			if(lastName.length() > max) {
-				errors.put("lastName", String.format("Le nom de famille doit être d'une taille maximale de %d !",max)); 
+				errors.put("lastName", String.format("Le nom de famille ne doit pas dépasser %d caractères!",max)); 
 			}
 		}
 	}
@@ -40,7 +40,7 @@ public class ClientValidator extends ValidatorBase {
 		} else {
 			var max = 100;
 			if(email.length() > max) {
-				errors.put("email", String.format("La taille maximale de l'email doit être de %d",max)); 
+				errors.put("email", String.format("L'email ne doit pas dépasser %d caractères!",max)); 
 			}
 			else if(!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
 				errors.put("email", "L'email n'est pas valide");
@@ -50,7 +50,7 @@ public class ClientValidator extends ValidatorBase {
 	
 	public void validateZipCode(String zipCode) {
 		if(!zipCode.matches("^\\d{5}$")){
-			errors.put("zipCode","Le code postale est non valide");
+			errors.put("zipCode","Le code postal doit contenir 5 chiffres.");
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class ClientValidator extends ValidatorBase {
 			errors.put("phone", "Vous devez rentrer un numéro de téléphone");
 		}
 		else if(!phone.matches("^\\d{1,15}$")){
-		    errors.put("phone", "Le numéro de téléphone doit être une série de maximum 15 chiffres");
+		    errors.put("phone", "Le numéro de téléphone ne doit pas dépasser 15 chiffres!");
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class ClientValidator extends ValidatorBase {
 		} else {
 			var max = 150;
 			if(address.length() > max) {
-				errors.put("address", String.format("L'adresse doit avoir une taille inférieure à %d !",max));
+				errors.put("address", String.format("L'adresse ne doit pas dépasser %d caractères!",max));
 			}
 		}
 	}
@@ -79,7 +79,7 @@ public class ClientValidator extends ValidatorBase {
 		} else {
 			var max = 15;
 			if(city.length() > max) {
-				errors.put("city", String.format("Le nom de la ville doit avoir une taille inférieur à %d !",max)); 
+				errors.put("city", String.format("Le nom de la ville ne doit pas dépasser %d caractères!",max)); 
 			}
 		}
 	}
@@ -99,7 +99,7 @@ public class ClientValidator extends ValidatorBase {
 		var min = 0;
 		var max = 1;
 		if(!state.matches(String.format("^[%d-%d]$",min,max))) {
-			errors.put("state", String.format("L'état du client doit être entre %d et %d", min, max));
+			errors.put("state", String.format("L'état du client doit être de %d ou %d", min, max));
 		}
 	}
 }

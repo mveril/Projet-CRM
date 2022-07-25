@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html>
 <head>
 	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>liste des clients</title>
 </head>
 <body class="list">
@@ -17,13 +17,13 @@
 <c:choose>
 
 				  <c:when test="${ empty clients }">
-				 <p>Aucun client trouvé...</p>
+				 <p>Aucun client trouvÃ©...</p>
 			</c:when>  
 			<c:otherwise>
 				<table>
 					<tr>
 						<th>Nom de la compagnie</th>
-						<th>Prénom</th>
+						<th>PrÃ©nom</th>
 						<th>Nom</th>
 						<th colspan="3">Actions<th>
 						

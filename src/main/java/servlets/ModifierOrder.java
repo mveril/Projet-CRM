@@ -16,6 +16,7 @@ import dao.DaoFactory;
 
 import modele.Client;
 import modele.Order;
+import validation.OrderValidator;
 
 
 @WebServlet("/modifierOrder")
@@ -51,37 +52,103 @@ public class ModifierOrder extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Long id = Long.parseLong(request.getParameter("id"));
+		var validator = new OrderValidator();
 		
 		String typePresta = request.getParameter("typePresta");
+		validator.validateTypePresta(typePresta);
+		
 		String designation = request.getParameter("designation");
-	    int nbDays = Integer.parseInt(request.getParameter("nbDays"));
-	    Float unitPrice = Float.parseFloat(request.getParameter("unitPrice"));
-	    long state = Long.parseLong(request.getParameter("state"));
+		validator.validateDesignation(designation);
+		
+	    String nbDaysStr = request.getParameter("nbDays");
+	    validator.validateNbDays(nbDaysStr);
+	    
+	    String unitPriceStr = request.getParameter("unitPrice");
+	    validator.validateUnitPrice(unitPriceStr);
+	    
+	    String stateStr = request.getParameter("state");
+	    validator.validateStateOrder(stateStr);
+	    
 	    long clientId = Long.parseLong(request.getParameter("clientId"));
 
+	    var erreurs = validator.getErrors();
 	    
-	    try {
-	    	Order order = orderDao.trouver(id);
-	    	Client client= clientDao.trouver(clientId);
+	    Long state;
+	    
+	    if(!erreurs.containsKey("state")) {
+			state = Long.parseLong(stateStr);
+		} else {
+			state = -1L;
+		}
+		
+		Long nbDays;
+		
+		if(!erreurs.containsKey("nbDays")) {
+			nbDays = Long.parseLong(nbDaysStr);
+		} else {
+			nbDays = -1L;
+		}
+		
+		Float unitPrice;
+		
+		if(!erreurs.containsKey("unitPrice")) {
+			unitPrice = Float.parseFloat(unitPriceStr);
+		} else {
+			unitPrice = -1f;
+		}
+		
+		var idStr = request.getParameter("id");
+		var id = Long.parseLong(idStr);
+	   
+			try
+			{
+				Order order = orderDao.trouver(id);
+		    	Client client= clientDao.trouver(clientId);
+				
+				order.setClient(client);		
+				order.setTypePresta(typePresta);
+		        order.setDesignation(designation);
+		        order.setNbDays(nbDays);
+		        order.setUnitPrice(unitPrice);
+		        order.setState(state);
+		        
+		        if(erreurs.isEmpty()) 
+		        {
+		        	try
+		        	{
+		        		orderDao.update(order);
+		        	}
+		        	catch (DaoException e) 
+		        	{
+    				e.printStackTrace();
+		        	}
 			
-			order.setClient(client);		
-			order.setTypePresta(typePresta);
-	        order.setDesignation(designation);
-	        order.setNbDays(nbDays);
-	        order.setUnitPrice(unitPrice);
-	        order.setState(state);
+		        response.sendRedirect(request.getContextPath()+"/listeOrders");
+		        } 
+		        else 
+		        {
+		        	request.setAttribute("order", order);
+		        	request.setAttribute("erreurs", erreurs);
+		        	request.setAttribute("resultat", "Echec de la sauvegarde de la commande.");
 
-	        orderDao.update(order);
-	        
-		} catch (DaoException e1) {
-			e1.printStackTrace();
-		}   
-        
-        response.sendRedirect(request.getContextPath()+ "/listeOrders");
-		
-		
-		
+		        	try 
+		        	{
+		    			request.setAttribute("clients", clientDao.lister());
+		    			request.setAttribute("order", orderDao.trouver(order.getId()));
+
+		    		} 
+		        	catch (DaoException e) 
+		        	{
+		    			e.printStackTrace();
+		    		}
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierOrder.jsp").forward(request, response);
+
+		        }
+			}
+		        catch (DaoException e) 
+		        {
+		        	e.printStackTrace();
+		        }
 	}
-
 }

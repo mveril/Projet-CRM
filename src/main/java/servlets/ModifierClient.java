@@ -12,6 +12,7 @@ import dao.DaoException;
 import dao.DaoFactory;
 
 import modele.Client;
+import validation.ClientValidator;
 
 
 /**
@@ -45,27 +46,54 @@ public class ModifierClient extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		var validator = new ClientValidator();
 		
 		String companyName=request.getParameter("companyName");
+		validator.validateCompanyName(companyName);
+		
 		String firstName=request.getParameter("firstName");
+		validator.validateFirstName(firstName);
+		
 		String lastName=request.getParameter("lastName");
+		validator.validateLastName(lastName);
+		
         String email=request.getParameter("email");
+        validator.validateEmail(email);
+        
         String phone=request.getParameter("phone");
+        validator.validatePhone(phone);
+        
         String address=request.getParameter("address");
+        validator.validateAddress(address);
+        
         String zipcode=request.getParameter("zipCode");
+        validator.validateZipCode(zipcode);
+        
         String city=request.getParameter("city");
+        validator.validateCity(city);
+        
         String country=request.getParameter("country");
+        validator.validateCountry(country);
         
         String stateStr=request.getParameter("state");
-        var state = Long.parseLong(stateStr);
+        validator.validateState(stateStr);
+        
+        var erreurs = validator.getErrors();
+        Long state;
+        
+        if(!erreurs.containsKey("state")) {
+			state = Long.parseLong(stateStr);
+		} else {
+			state = -1L;
+		}
       
         var clientIdStr = request.getParameter("id");
 	    var clientId = Long.parseLong(clientIdStr);
-        
-        try {
-        	
-        	Client client= clientDao.trouver(clientId);
-        	
+
+	    try
+	    {
+	    	Client client= clientDao.trouver(clientId);
+	
         	client.setCompany(companyName);
             client.setFirstName(firstName);
             client.setLastName(lastName);
@@ -76,19 +104,41 @@ public class ModifierClient extends HttpServlet {
             client.setCity(city);
             client.setCountry(country);
             client.setState(state);
+            
+            
         	
-           	
-            clientDao.update(client);
-			
-			
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
+            if(erreurs.isEmpty()) {
+    			try 
+    			{
+    				clientDao.update(client);
+    			} catch (DaoException e) 
+    			{
+    				e.printStackTrace();
+    			}
+    			
+    			response.sendRedirect( request.getContextPath() + "/listeClients" );
+    		} else {
+    			request.setAttribute("client", client);
+    			request.setAttribute("erreurs", erreurs);
+    			request.setAttribute("resultat", "Echec de la sauvegarde de du client.");
+    			
+    			try 
+    			{
+    				request.setAttribute("client", clientDao.trouver(client.getId()));
+    			} 
+    			catch (DaoException e) 
+    			{
+    				e.printStackTrace();
+    			}		
+    			
+    			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierClient.jsp").forward(request, response);
+    		}			
+	    }
+	    catch (DaoException e) 
+		{
 			e.printStackTrace();
 		}
-        
-        
-        response.sendRedirect(request.getContextPath()+ "/listeClients");
-        				
-	}
-
+	    
+     }
 }
+

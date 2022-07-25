@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Ajout d'une commande</title>
 </head>
 <body >
@@ -13,7 +13,7 @@
 <div class="form">
 		<form method="post" action="<c:url value="/ajouterOrder"/>">	
 		<fieldset>
-			<legend> Créer une commande</legend>
+			<legend> CrÃ©er une commande</legend>
 			
 				<c:import url="/WEB-INF/OrderFields.jsp" />
 				

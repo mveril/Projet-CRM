@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -7,15 +7,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Modifier commande</title>
 </head>
-<body class="listeC">
+<body class="list">
 <c:import url="/WEB-INF/menu.jsp" />
 
 	<div class="view">
 
-		<form method="post" action="<c:url value="/modifierOrder"/>">	
+		<form method="post" action="<c:url value="/modifierOrder"><c:param name="id" value="${order.id}"/></c:url>">	
 		<fieldset>
 			<legend> Modifier une commande</legend>
 			

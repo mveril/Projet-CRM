@@ -9,13 +9,17 @@ public class OrderValidator extends ValidatorBase {
 		var min = 0;
 		var max = 2;
 		if(!state.matches("^0*[0-2]$"))
-			errors.put("state", String.format("L'état de la commande doit être un nombre entre %d et %d", min,max)); 
+			errors.put("state", String.format("L'état de la commande doit être un nombre compris entre %d et %d", min,max)); 
 	}
 
 	
 	public void validateUnitPrice(String unitPrice) {
-		if(!unitPrice.matches("^\\d+[,\\.]?\\d*$")) {
-			 errors.put("unitPrice", "Le prix unitaire doit être un nombre positif");
+		if(unitPrice.isEmpty())
+		{
+			errors.put("unitPrice", "Veuillez entrer un prix");
+		}
+		else if(!unitPrice.matches("^\\d+[,\\.]?\\d*$")) {
+			 errors.put("unitPrice", "Le prix unitaire doit être positif");
 		}
 		
 	}
@@ -25,7 +29,7 @@ public class OrderValidator extends ValidatorBase {
 		if(nbDays.isEmpty()) {
 	  		errors.put("nbDays", "Veuillez entrer un nombre de jours");  
 		} else if (!nbDays.matches("^0*[1-9]\\d*$")) {
-			errors.put("nbDays", "Le nombre de jours doit étre un entier positif");
+			errors.put("nbDays", "Le nombre de jours doit être positif");
 		}
 		
 	}
@@ -36,7 +40,7 @@ public class OrderValidator extends ValidatorBase {
 		} else {
 			var max = 100;
 			if(designation.length() > max) {
-				errors.put("designation", String.format("La désignation doit avoir moins de %d caractères", max));
+				errors.put("designation", String.format("La désignation ne doit pas dépasser %d caractères", max));
 			}
 		}
 		
@@ -48,7 +52,7 @@ public class OrderValidator extends ValidatorBase {
 		} else {
 			var max = 100;
 			if(typePresta.length() > max) {
-				errors.put("typePresta", String.format("Le type de prestation doit avoir moins de %d caractères", max));
+				errors.put("typePresta", String.format("Le type de prestation ne doit pas dépasser %d caractères", max));
 			}
 		}
 	}

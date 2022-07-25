@@ -68,7 +68,7 @@ public class AjouterOrder extends HttpServlet {
 			state = -1L;
 		}
 		
-		long nbDays;;
+		long nbDays;
 		if(!erreurs.containsKey("nbDays")) {
 			nbDays = Long.parseLong(nbDaysStr);
 		} else {
