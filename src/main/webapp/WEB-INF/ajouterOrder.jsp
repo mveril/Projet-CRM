@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Ajout d'une commande</title>
 </head>
-<body>
+<body >
 <c:import url="/WEB-INF/menu.jsp" />
 <div class="form">
 		<form method="post" action="<c:url value="/ajouterOrder"/>">	

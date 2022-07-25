@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>Détail commandes</title>
 </head>
-<body>
+<body class="detail">
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 
-	<div>Détail de la commande</div>
+	<h1>Détail de la commande</h1>
 	
 			<table>
 			<thead>
@@ -42,7 +42,7 @@
 			</tbody>
 		</table>
 		
-			<div><a href="<c:url value="/listeOrders" />">Retour à la liste des commandes</a></div>
+			<div><a class="link" href="<c:url value="/listeOrders" />">Retour à la liste des commandes</a></div>
 		
 
 </body>

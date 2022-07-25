@@ -16,28 +16,28 @@
 		<span class="erreur">${ erreurs['clientId'] }</span> 
 	</div> 
 				<div>
-					<label for="typePresta"> typePresta </label> 
+					<label for="typePresta">Type de prestation</label> 
 					<input type="text" id="typePresta" name="typePresta" value="${order.typePresta }" />
 					<span class="erreur">${ erreurs['typePresta'] }</span>
 					 
 				</div>
 				<div>
-					<label for="designation"> designation </label> 
+					<label for="designation">Désignation</label> 
 					<input type="text" id="designation" name="designation" value="${ order.designation }" />
 					<span class="erreur">${ erreurs['designation'] }</span>
 				</div>
 				<div>
-					<label for="nbDays">nbDays </label> 
+					<label for="nbDays">Nombre de jours </label> 
 					<input type="text" id="nbDays" name="nbDays" value="${ order.nbDays }" />
 					<span class="erreur">${ erreurs['nbDays'] }</span>
 				</div>
 				<div>
-					<label for="unitPrice">unitPrice </label>
+					<label for="unitPrice">Prix unitaire </label>
 					<input type="text" id="unitPrice" name="unitPrice" value="${ order.unitPrice }" />
 					<span class="erreur">${ erreurs['unitPrice'] }</span>
 				</div>
 				<div>
-					<label for="state">state </label>
+					<label for="state">Etat de la commande</label>
 					<input type="text" id="state" name="state" value="${ order.state }" />
 					<span class="erreur">${ erreurs['state'] }</span>
 				</div> 

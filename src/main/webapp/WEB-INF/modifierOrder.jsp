@@ -10,8 +10,8 @@
 <meta charset="ISO-8859-1">
 <title>Modifier commande</title>
 </head>
-<body>
-
+<body class="listeC">
+<c:import url="/WEB-INF/menu.jsp" />
 
 	<div class="view">
 

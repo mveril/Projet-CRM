@@ -1,25 +1,110 @@
-.index {
-	background-image: url('https://blog.reedexpo.fr/wp-content/uploads/2020/11/type-de-relation-client-call-center-scaled.jpg');
-	background-repeat: no-repeat;
-	background-position: inherit;
-	background-size: cover;
+@charset "ISO-8859-1";
+
+/* .index {
+	background-color:#00BFFF;     
+}
+body.list body.detail {
+	background-color:#00BFFF; 
+} */
+
+body {
+	background-color:#00BFFF;     
+}
+
+.imgCapture{
+	position: absolute;
+	top: 120px;
+	left: 90px;
+	width: 500px;
+	height: 350px;
+}
+
+.erreur {
+	color:#DF3F3F;
 }
 
 .titre{
 	text-align:center;
-	color : #646464
+	color : #646464;
+	font-family: Montserrat, 'Open Sans', sans-serif;
 }
 
+
+.titre1{
+	text-align:center;
+	color:white;
+    margin-top: 1em;
+    margin-bottom: 5px;
+    padding-bottom: 40px;
+    text-transform: uppercase;
+    line-height: 1.4em;
+    font-family: Montserrat, 'Open Sans', sans-serif;
+    font-weight: 900;
+    position: absolute;
+	top: 150px;
+	left: 680px;
+   
+}
+form {
+ background-color:#80f9ff;
+ padding:70px;
+ max-width: 100%;
+ max-height: 100%;
+ margin:auto;
+
+ }
+ 
+ fieldset {
+ padding:0 20px 20px 20px;
+ margin-bottom:10px;
+ border:1px solid #DF3F3F;
+ }
+ 
+ legend {
+ color:#DF3F3F;
+ font-weight:bold
+ }
+ 
+ label {
+ margin-top:5px;
+ display:block;
+ }
+ 
+ input, textarea, select, option {
+ background-color:#FFF3F3;
+ }
+ 
+ input, textarea, select {
+ padding:3px;
+ border:1px solid #F5C5C5;
+ border-radius:5px;
+ width:200px;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }
+ 
+ select {
+ margin-top:10px;
+ }
+ 
+ input[type=submit], input[type=reset] {
+ width:100px;
+ margin-left:5px;
+ box-shadow:1px 1px 1px #D83F3D;
+ cursor:pointer;
+ }
+ 
+ 
 table
 {
 	margin: auto;
 	width: 100%;
+	background-color: #c0c0c0;
 }
 
 .bouton
 {
 	margin: 20px;
-	background-color: #00ACD6;
+	background-color: white ;
 	border-radius: 5px;
 }
 
@@ -29,22 +114,40 @@ button:hover {
 
 .menu
 {
-	background-color: #00ACD6;
-	align-content: center;
-	align-self: center;
-	width: 100%;
-	margin: auto;
+	
+  margin: 0 ;
+  padding: 0 ;
+  list-style: none ;
+  text-align: center ;
+  
+  padding: 4px 20px ;
+  background: #8080ff ;
+  
+  border: 1px solid #600 ;
+  font: 1em "Trebuchet MS",Arial,sans-serif ;
+  line-height: 1em ;
+  text-align: center ;
+    
 }
-
+.link {
+	color:#FFF;
+}
 td 
 { 
  	text-align:center;
 }
+
+td:hover 
+{background-color: #00BFFF;}
+
+
  
  th 
 { 
-  	background-color:#33FFBE;
+  	background-color:#8080ff;
+		color: #FFF;
  	text-align:center;
+ 	
 }
 
 tbody > tr:nth-child(odd)
@@ -55,4 +158,8 @@ tbody > tr:nth-child(odd)
 tbody > tr:nth-child(even)
 {
     background-color:#B9D7CE;
+}
+
+ tr th {
+  font-family: 'Rock Salt', cursive;
 }

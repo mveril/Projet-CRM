@@ -10,12 +10,12 @@
 <meta charset="UTF-8">
 <title>Détail client</title>
 </head>
-<body>
+<body class="detail">
 
 			<c:import url="/WEB-INF/menu.jsp" />
 		
 	
-		<div> Détails de ${ client.firstName } ${ client.lastName } </div>
+		<h2> Détails de ${ client.firstName } ${ client.lastName } </h2>
 		
 		<c:choose>
 			<c:when test="${ empty client }">
@@ -53,7 +53,7 @@
 	</c:choose>		
 	
 	
-	<div><a href="<c:url value="/listeClients" />">Retour à la liste des clients</a></div>
+	<div><a class="link" href="<c:url value="/listeClients" />">Retour à la liste des clients</a></div>
 	
 </body>
 </html>
