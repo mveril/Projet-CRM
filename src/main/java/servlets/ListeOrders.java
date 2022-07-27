@@ -30,11 +30,9 @@ public class ListeOrders extends HttpServlet {
 		
 		try
 		{
-			List<Order> orders=null;
 
-			orders = orderDao.lister();
-
-			request.setAttribute("orders", orderDao.lister());
+			List<Order> orders = orderDao.lister();
+			request.setAttribute("orders", orders);
 		}
 		catch (DaoException e)
 		{

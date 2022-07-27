@@ -29,11 +29,10 @@ public class ListeClients extends HttpServlet {
 		
 		try 
 		{
-			List<Client> clients=null;
+			 
+			 List<Client> clients = clientDao.lister();
 			
-			clients = clientDao.lister();
-			
-			request.setAttribute("clients", clientDao.lister());
+			request.setAttribute("clients", clients);
 		} 
 		catch (DaoException e) 
 		{
